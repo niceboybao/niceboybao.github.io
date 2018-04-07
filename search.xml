@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[简历01]]></title>
+    <url>%2F2018%2F04%2F08%2Fmine%2Finterview%2Fresume0408%2F</url>
+    <content type="text"><![CDATA[前端面试简历教育背景个人技能工作经验获得证书个人评价]]></content>
+      <categories>
+        <category>我的</category>
+      </categories>
+      <tags>
+        <tag>简历</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[致年轻的自己]]></title>
+    <url>%2F2018%2F04%2F08%2Fmine%2Fpower%2Fpower01%2F</url>
+    <content type="text"><![CDATA[致年轻的自己20-30岁你拿这十年做什么？ [尴尬]篇20多岁的尴尬，是迷茫，是害怕；是才华配不上梦想；是付出配不上野心；是现实与生活的较量。 [苦才是人生]篇矛盾说，我从来不梦想，我只是在努力认识现实；洪深说，我的梦想是明年吃苦比今年更强；鲁迅说，人生最大的痛苦是梦醒了无路可走！]]></content>
+      <categories>
+        <category>我的</category>
+      </categories>
+      <tags>
+        <tag>谁的清楚不迷茫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[做了一年的react自己的感悟和总结]]></title>
     <url>%2F2018%2F04%2F04%2Freact%2Freact-think-1%2F</url>
     <content type="text"><![CDATA[做了一年的react自己的感悟和总结react确实是一个神奇而优雅的框架。在从事react项目之前，一直是在做angular的，angular是一个全面和庞大的框架，在起初设计的时候什么都有，复杂程度也很高，所以用angular做项目基本上不需要其他的辅助库来配合。但是react项目真的是不一样了，要是只会一个react的话，很难开发出需求的。因为react就只负责UI的渲染。 做react项目需要掌握什么react 功能单一用于UI渲染，redux 用来管理数据，react-router 用来管理路由，webpack 用来配置工程，ES6 让代码更加优雅，redux-saga 用来处理异步请求，reselect 缓存机制用来减少state改变带来的渲染压力,还有一些为了交互衍生出来的中间件 react-redux、react-router-redux、react-router-dom ，预处理器或Less 尽量也掌握下。 从V-dom出发react最难能可贵的就是虚拟dom的思想，这里有个贴切的比喻：把dom和JavaScript想象为各自的2个岛屿，中间有桥梁相连，但是桥上设有收费站，JavaScript去访问dom岛屿的次数越多，费用就越高。这就是一个js操作dom的过程，也许我们经常听到或者看到说尽量少的去操作dom，很耗性能。但是DOM 操作成本到底高在哪儿？,这边小总结下： 从输入uri到页面加载好是一个很漫长的过程，我们就从html的解析开始说起。①解析HTML，开始构建DOM树；②解析CSS，生成CSS规则树；③合并DOM树和CSS规则树，生成render树；④布局render树（Layout/reflow），这时候负责元素尺寸大小，位置的计算，属于js中回流过程；⑤绘制render树（paint），绘制页面像素，属于重绘的过程；⑥浏览器会将各层的信息发送给GPU(图像处理器)，GPU将各层合成（composite），显示在屏幕上。这是初始化渲染的过程，通过js操作DOM后，会引起 回流 和重绘，回流的成本很高，一个节点的回流会导致兄弟节点和子节点的回流，这样就一直在消耗GPU资源，所以才有了成本高的说法。 我们从操作dom的成本开始引入react，它创造了虚拟dom并且将它们储存起来，每当状态发生变化的时候就会创造新的虚拟节点和以前的进行对比，让变化的部分进行渲染。整个过程没有对dom进行获取和操作，只有等真正render时，才会去操作真实dom，从而引发页面的渲染。]]></content>
@@ -12,19 +34,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[我的日记]]></title>
-    <url>%2F2018%2F04%2F02%2Fmine%2Fmy-daily%2F</url>
-    <content type="text"><![CDATA[test]]></content>
-      <categories>
-        <category>diary</category>
-      </categories>
-      <tags>
-        <tag>diary</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[平时整理的css水平垂直居中]]></title>
-    <url>%2F2018%2F03%2F28%2Fcss-center-md%2F</url>
+    <url>%2F2018%2F03%2F28%2Flayout%2Fcss-center-md%2F</url>
     <content type="text"><![CDATA[水平垂直居中Learn more here掘金-CSS的垂直居中和水平居中总结 16种方法实现水平居中垂直居中 水平居中1.行内元素（inline element）, 给其父元素设置 text-align:center （适用行内元素）什么是行内元素，块级元素 12inline element也叫内联元素、内嵌元素等；行内元素一般都是基于语义级(semantic)的基本元素，只能容纳文本或其他内联元素，常见内联元素 “a”。比如 SPAN 元素，IFRAME元素和元素样式的display : inline的都是行内元素。 2.块级元素（block element）, 该元素设置 margin:0 auto即可.只有块级元素才生效（让整个块元素居中）margin 0 auto与text-align:center的区别 1text-align:center设置为文本或img标签等一些内联对象（或与之类似的元素）的居中。margin:0 auto是设置块元素（或与之类似的元素）的居中。 图片的水平居中我们设置图片标签img {margin:0 auto;} ，我们就犯了一个小错误，img类于内联对象，不可以设置图片img标签的margin属性，如果你一定想要设置，那么首先要将它的属性转变为块元素，如下面的代码： 1234img &#123; display:block; margin:0 auto;&#125; 3.在一个盒子里面，让一个有固定宽高的盒子实现水平居中：12display: block; /* 转化成为块级元素 */magin: auto; 4.绝对定位元素的居中实现123456.element &#123; width: 600px; height: 400px; position: absolute; left: 50%; top: 50%; margin-top: -200px; /* 高度的一半 */ margin-left: -300px; /* 宽度的一半 */&#125; 上面的写法需要严格知道盒子的宽高(局限性)，所以有了下面的写法(手机web开发可忽略,E10+以及其他现代浏览器才支持) 12345.element &#123; width: 600px; height: 400px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); /* 50%为自身尺寸的一半 */&#125; 总结下 ，margin:auto实现绝对定位元素的居中（水平垂直居中） 123456.element &#123; width: 600px; height: 400px; position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto; /* 有了这个就自动居中了 */&#125; 垂直居中1.若元素是单行文本, 则可设置 line-height 等于父元素高度1234.element &#123; line-height: 10px; height:10px;&#125; 2.若元素是行内块级元素（行内元素的一种）123456.element &#123; height:10px; line-height:10px; display: inline-block; vertical-align: middle;&#125; 3.块级元素（元素高度固定）123456.element &#123; width: 600px; height: 400px; position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto; /* 有了这个就自动居中了 */&#125; 4.很普通的一种垂直居中12345678.parent::after, .son&#123; display:inline-block; vertical-align:middle; &#125; .parent::after&#123; content:''; height:100%; &#125; flex弹性布局实现水平垂直居中1.实现用flex布局的水平垂直居中特别方便，想要进一步了解Flex弹性布局请参考Flex 布局教程：语法篇和 Flex 布局教程：实例篇 flex的居中 12345.element &#123; .display: flex; align-items：center; /* 垂直方向上的对齐方式； */ justify-content：center; /* 水平方向上的对齐方式 */&#125; 但是用了flex布局后 有一些css属性会失效？ 2.存在的问题2.1 当一个块级元素要实现垂直居中(文本过短时)，和上下滚动(文本过长时)这种场景的时候往往会出现问题. 12345&lt;div class="div-bottom"&gt; &lt;div class="div-bottom-1"&gt; 水平垂直居下~~~~水平垂直居下~~~~ &lt;/div&gt;&lt;/div&gt; 1234567891011121314.div-bottom &#123; display: flex; height: 50%; flex-direction: column; justify-content: center; align-items: center; overflow: auto;&#125;.div-bottom-1 &#123; margin: auto; display: flex; margin: auto;&#125; 2.2 align-items：center;(垂直)和justify-content：center;(水平)的居中方向有的时候会相反？ flex布局有主轴和辅轴的概念。]]></content>
       <categories>
         <category>CSS</category>
@@ -35,7 +46,7 @@
   </entry>
   <entry>
     <title><![CDATA[GitHub Pages自定义域名]]></title>
-    <url>%2F2018%2F03%2F28%2Fgithub-page%2F</url>
+    <url>%2F2018%2F03%2F28%2Ftools%2Fgit%2Fgithub-page%2F</url>
     <content type="text"><![CDATA[简介现在有很多的前端开发者用XXX.github.io作为自己的博客，然后绑定到自己的域名上面，感觉起来挺不错。一、不用花钱买服务器了，二、一套流程下来前端完全可以搞定。部署完成是这样的 niceboybao.github.io niceboybao.com 有创意的小伙伴还可以用现在流行的三大框架(angular,react,或者vue)构建自己的博客工程呢，这一块我也在着手开始，在工作的业余时间，让自己变得更充实！对没错，生活不止眼前的苟且 还有诗和远方。下面开始正式环节，以niceboybao为例！ 主要参考资料Using a custom domain with GitHub Pages 用阿里云免费ssl证书把网站从http变成https 配置 niceboybao.github.io创建repository首先需要在GitHub上面创建一个repository，并且命名为niceboybao.github.io。 添加CNAME文件小伙伴可以把repository克隆下来，在repository下创建一个CNAME文件,文件名大写且没有后缀，如下图。文件里面添加需要绑定的域名，注意没有www和https前缀。 settings然后到repository的设置页面设置将自己的仓库发布到网站上面，并且添加上域名 如图： 域名解析现在挺流行的阿里云，我这边用阿里云举例，首先要找到自己购买的域名（控制台-&gt;域名与网站(万网)-&gt;域名-&gt;解析）然后配置下面2步 第一步，@符号的是指定你的域名xxx.com映射到xxx.github.io，第二布，www那一条是指定你的主域名www.xxx.com映射到xxx.github.io。这边看别人配置的时候都说一定不要忘记`xxx.github.io.`后面的`.`，可是好像加上去了没效果，不知道有没有小伙伴遇到过呢！ 配置完了勾选点击启动就ok啦！要全球解析生效，好像得等上一会了。后面就开始你们的表演吧，用自己熟悉的框架开发一个属于自己的blogs吧！niceboybao.com 另外，在GitHub上面的仓库只要在settings里面把他们发布到网站上面，就可以用niceboybao.com/xxx（xxx表示仓库名）访问到如：valentines_day。 用阿里云免费ssl证书把网站从http变成https HTTP 协议是不加密传输数据的，也就是用户跟你的网站之间传递数据有可能在途中被截获，破解传递的真实内容，所以使用不加密的 HTTP 的网站是不太安全的。所以， Google 的 Chrome 浏览器将在 2017 年 1 月开始，标记使用不加密的 HTTP 协议的网站为 Not Secure，不安全。 登录阿里云后台，找到，产品与服务-》找到证书服务，购买证书 找到免费型的DV SSL 购买后在订单页面点击补全，输入你的域名，如xxx.com，最后提交审核。当证书是已签发状态时，就可下载。]]></content>
       <categories>
         <category>博客配置</category>
@@ -46,7 +57,7 @@
   </entry>
   <entry>
     <title><![CDATA[前端规范篇(上)]]></title>
-    <url>%2F2018%2F03%2F27%2Fstandard-0328%2F</url>
+    <url>%2F2018%2F03%2F27%2Fstandard%2Fstandard-0328%2F</url>
     <content type="text"></content>
       <categories>
         <category>前端规范</category>
@@ -57,7 +68,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hexo docs]]></title>
-    <url>%2F2018%2F03%2F26%2Fhow-to-hexo-site%2F</url>
+    <url>%2F2018%2F03%2F26%2Ftools%2Fhexo%2Fhow-to-hexo-site%2F</url>
     <content type="text"><![CDATA[Hexo 配置一个优雅的博客参考链接 NexT开始使用教程 NexT主题配置教程 Hexo 中文文档 搭建个人博客-hexo+github详细完整步骤 step1 安装git,node.js和hexo1npm install -g hexo step2 初始化Hexo新建一个hexo的文件夹，在当前文件件下面执行：1hexo init 在_config.yml,进行基础配置 配置主题这里可以浏览更多主题,这里以NexT主题为例 1git clone https://github.com/iissnan/hexo-theme-next themes/next 本地浏览博客123hexo cleanhexo ghexo s step3 部署到GitHub上在自己的GitHub上面新建一个name.github.io仓库，有的话就不用新建了图片 在_config.yml进行配置123deploy: type: git repo: https://github.com/niceboybao/niceboybao.github.io.git 安装hexo-deployer-git自动部署发布工具1npm install hexo-deployer-git --save 发布到Github1hexo clean &amp;&amp; hexo g &amp;&amp; hexo d 发布完成输入niceboybao.github.io就可以访问 更多Hexo命令更多Hexo常用命令 12hexo new &quot;postName&quot; //新建文章hexo new page &quot;pageName&quot; //新建页面 stpex 配置时遇到的问题阅读次数统计的问题记录文章访问量的唯一标识符是文章的发布日期以及文章的标题，因此请确保这两个数值组合的唯一性，如果你更改了这两个数值，会造成文章阅读数值的清零重计。]]></content>
       <categories>
         <category>博客配置</category>
@@ -68,7 +79,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hello World Hexo]]></title>
-    <url>%2F2018%2F03%2F25%2Fhello-world-hexo%2F</url>
+    <url>%2F2018%2F03%2F25%2Ftools%2Fhexo%2Fhello-world-hexo%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
       <categories>
         <category>博客配置</category>
