@@ -446,7 +446,7 @@
 <blockquote>
 <p>组件初始化时不调用，组件接受新的props时调用。</p>
 </blockquote>
-<p>此方法中改变state不会二次渲染而是进行state合并。</p>
+<p>开发过程中一般是在这个钩子函数里面改变<code>state</code>,此方法中改变state不会二次渲染而是进行state合并。</p>
 <p><strong>7.shouldComponentUpdate(nextProps, nextState)</strong></p>
 <blockquote>
 <p>react性能优化非常重要的一环。组件接受新的state或者props时调用，我们可以设置在此对比前后两个props和state是否相同，如果相同则返回false阻止更新，因为相同的属性状态一定会生成相同的dom树，这样就不需要创造新的dom树和旧的dom树进行diff算法对比，节省大量性能，尤其是在dom结构复杂的时候。不过调用this.forceUpdate会跳过此步骤。</p>
@@ -464,7 +464,7 @@
 <blockquote>
 <p>组件初始化时不调用，组件更新完成后调用，此时可以获取dom节点。</p>
 </blockquote>
-<p>在componentDidUpdate后才能获取更新后的this.state。如果想获取组件默认的props，并且赋值给State ,就可以在这里修改，达到UI上的效果。</p>
+<p>在componentDidUpdate后才能获取更新后的<code>this.state</code>。如果想获取组件默认的props，并且赋值给State ,就可以在这里修改，达到UI上的效果。</p>
 <h4 id="组件卸载时调用"><a href="#组件卸载时调用" class="headerlink" title="组件卸载时调用"></a>组件卸载时调用</h4><p><strong>10.componentWillUnmount()</strong></p>
 <blockquote>
 <p>组件将要卸载时调用，一些事件监听和定时器需要在此时清除,还有此组件store上面的值也可以对应的清楚。</p>
@@ -597,7 +597,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +608,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -619,7 +619,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
