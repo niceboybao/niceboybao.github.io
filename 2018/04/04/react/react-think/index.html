@@ -442,6 +442,10 @@
 <p>组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次。</p>
 </blockquote>
 <p>did的前缀表示进入状态之后调用，比如componentDidMount，组件一般初始化都会在这里进行数据请求。</p>
+<blockquote>
+<p><a href="https://segmentfault.com/q/1010000008133309" target="_blank" rel="noopener">为什么请求数据要在这个钩子函数里面调用?</a></p>
+</blockquote>
+<p>我的总结详见<a href="https://niceboybao.github.io/2018/04/04/react/questions/" target="_blank" rel="noopener">react中遇到的一些问题的解答</a></p>
 <h4 id="组件交互更新时触发的5个钩子函数"><a href="#组件交互更新时触发的5个钩子函数" class="headerlink" title="组件交互更新时触发的5个钩子函数"></a>组件交互更新时触发的5个钩子函数</h4><p><strong>6.componentWillReceiveProps(nextProps)</strong></p>
 <blockquote>
 <p>组件初始化时不调用，组件接受新的props时调用。</p>
@@ -597,7 +601,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
