@@ -417,7 +417,7 @@
 <p>前面有说过react只负责ui的渲染</p>
 </blockquote>
 <h3 id="从V-dom出发"><a href="#从V-dom出发" class="headerlink" title="从V-dom出发"></a>从V-dom出发</h3><p>react最难能可贵的就是虚拟dom的思想，这里有个贴切的比喻：把dom和JavaScript想象为各自的2个岛屿，中间有桥梁相连，但是桥上设有收费站，JavaScript去访问dom岛屿的次数越多，费用就越高。这就是一个js操作dom的过程，也许我们经常听到或者看到说尽量少的去操作dom，很耗性能。但是<a href="http://mp.weixin.qq.com/s/MdnUDH3FwQ5Yv3LeHI3PMQ" target="_blank" rel="noopener">DOM 操作成本到底高在哪儿？</a>,这边小总结下：</p>
-<p>从输入uri到页面加载好是一个很漫长的过程，我们就从html的解析开始说起。①解析HTML，开始构建DOM树；②解析CSS，生成CSS规则树；③合并DOM树和CSS规则树，生成render树；④布局render树（Layout/reflow），这时候负责元素尺寸大小，位置的计算，属于js中回流过程；⑤绘制render树（paint），绘制页面像素，属于重绘的过程；⑥浏览器会将各层的信息发送给GPU(图像处理器)，GPU将各层合成（composite），显示在屏幕上。这是初始化渲染的过程，通过js操作DOM后，会引起 <a href="http://www.css88.com/archives/4996" target="_blank" rel="noopener">回流</a> 和重绘，回流的成本很高，一个节点的回流会导致兄弟节点和子节点的回流，这样就一直在消耗GPU资源，所以才有了成本高的说法。</p>
+<p>从输入url到页面加载好是一个很漫长的过程，我们就从html的解析开始说起。①解析HTML，开始构建DOM树；②解析CSS，生成CSS规则树；③合并DOM树和CSS规则树，生成render树；④布局render树（Layout/reflow），这时候负责元素尺寸大小，位置的计算，属于js中回流过程；⑤绘制render树（paint），绘制页面像素，属于重绘的过程；⑥浏览器会将各层的信息发送给GPU(图像处理器)，GPU将各层合成（composite），显示在屏幕上。这是初始化渲染的过程，通过js操作DOM后，会引起 <a href="http://www.css88.com/archives/4996" target="_blank" rel="noopener">回流</a> 和重绘，回流的成本很高，一个节点的回流会导致兄弟节点和子节点的回流，这样就一直在消耗GPU资源，所以才有了成本高的说法。</p>
 <p>我们从操作dom的成本开始引入react，它创造了虚拟dom并且将它们储存起来，每当状态发生变化的时候就会创造新的虚拟节点和以前的进行对比，让变化的部分进行渲染。整个过程没有对dom进行获取和操作，只有等真正render时，才会去操作真实dom，从而引发页面的渲染。</p>
 <h4 id="V-dom的缺点"><a href="#V-dom的缺点" class="headerlink" title="V-dom的缺点"></a>V-dom的缺点</h4><p>ReactJS 使用虚拟 DOM 机制，让前端开发者为每个组件提供一个 render 函数。render 函数把 props 和 state 转换成 ReactJS 的虚拟 DOM，然后 ReactJS 框架根据render 返回的虚拟 DOM 创建相同结构的真实 DOM。</p>
 <p>每当 state 更改时，ReactJS 框架重新调用 render 函数，获取新的虚拟 DOM 。然后，框架会比较上次生成的虚拟 DOM 和新的虚拟 DOM 有哪些差异，进而把差异应用到真实 DOM 上。</p>
