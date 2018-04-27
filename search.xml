@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[js中的声明提前]]></title>
+    <url>%2F2018%2F04%2F27%2Fjavascript%2Fvar-before%2F</url>
+    <content type="text"><![CDATA[简介不多说，直接上代码 12345678var num = 100;function fun() &#123; console.log(num); //undefined var num = 10; console.log(num); //10&#125;fun(); 123456789var num = 100;function fun() &#123; var num; console.log(num); //undefined num = 10; console.log(num); //10&#125;fun(); 其实上面2段代码是等价的 var 声明一个变量的时候，会把它提前到改作用域的最前面。 参考 谈谈 JavaScript 中的 声明提前（hoisting）]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ES6处理异步的一些机制]]></title>
     <url>%2F2018%2F04%2F19%2FES6%2Fasync%2F</url>
     <content type="text"><![CDATA[简介JavaScript 里面处理异步调用一直是非常恶心的一件事情。以前只能通过回调函数，后来渐渐又演化出来很多方案 参考 ES6 async/await 大概也许是」目前最好的 JavaScript 异步方案 async/await Promise generator函数 ES6–Promise、Generator及async generator函数PromisePromise 用异步的方式写出看上去同步的代码(看上去是同步的代码，实际执行是异步的。) 12345//传统的异步方式出现的问题代码逻辑书写顺序与执行顺序不一致，不利于阅读与维护。异步操作的顺序变更时，需要大规模的代码重构。回调函数基本都是匿名函数，bug 追踪困难。回调函数是被第三方库代码（如上例中的 ajax ）而非自己的业务代码所调用的，造成了 IoC 控制反转。 Promise 是一个构造函数， new Promise 返回一个 promise对象 接收一个excutor执行函数作为参数, excutor有两个函数类型形参resolve reject 1234const promise = new Promise((resolve, reject) =&gt; &#123; // 异步处理 // 处理结束后、调用resolve 或 reject&#125;); Promise相当于一个状态机有3种状态：pending，fulfilled，rejected promise 对象初始化状态为 pending 当调用resolve(成功)，会由pending =&gt; fulfilled 当调用reject(失败)，会由pending =&gt; rejected async/await async 函数就是 Generator 函数的语法糖。 async函数就是将 Generator 函数的星号（*）替换成async，将yield替换成await，仅此而已。 但是，async函数对 Generator 函数有改进，体现在以下四点： 内置执行器。 更好的语义。 更广的适用性。 co模块约定，yield命令后面只能是 Thunk 函数或 Promise 对象，而async函数的await命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时等同于同步操作）。 返回值是 Promise。 12345678910//基本用法async function getStockPriceByName(name) &#123; const symbol = await getStockSymbol(name); const stockPrice = await getStockPrice(symbol); return stockPrice;&#125;getStockPriceByName('goog').then(function (result) &#123; console.log(result);&#125;);]]></content>
