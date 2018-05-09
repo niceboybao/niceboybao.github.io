@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[js中的声明提前]]></title>
     <url>%2F2018%2F04%2F27%2Fjavascript%2Fvar-before%2F</url>
-    <content type="text"><![CDATA[简介不多说，直接上代码 12345678var num = 100;function fun() &#123; console.log(num); //undefined var num = 10; console.log(num); //10&#125;fun(); 123456789var num = 100;function fun() &#123; var num; console.log(num); //undefined num = 10; console.log(num); //10&#125;fun(); 其实上面2段代码是等价的 var 声明一个变量的时候，会把它提前到改作用域的最前面。 参考 谈谈 JavaScript 中的 声明提前（hoisting）]]></content>
+    <content type="text"><![CDATA[简介不多说，直接上代码 12345678var num = 100;function fun() &#123; console.log(num); //undefined var num = 10; console.log(num); //10&#125;fun(); 等价于 =&gt; 123456789var num = 100;function fun() &#123; var num; console.log(num); //undefined num = 10; console.log(num); //10&#125;fun(); 其实上面2段代码是等价的 var 声明一个变量的时候，会把它提前到改作用域的最前面。 参考 谈谈 JavaScript 中的 声明提前（hoisting）]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>

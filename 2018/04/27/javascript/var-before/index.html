@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="简介不多说，直接上代码 12345678var num = 100;function fun() &amp;#123;    console.log(num); //undefined    var num = 10;    console.log(num); //10&amp;#125;fun(); 123456789var num = 100;function fun() &amp;#123;    var num;">
+<meta name="description" content="简介不多说，直接上代码 12345678var num = 100;function fun() &amp;#123;    console.log(num); //undefined    var num = 10;    console.log(num); //10&amp;#125;fun(); 等价于 =&amp;gt; 123456789var num = 100;function fun() &amp;#123;">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js中的声明提前">
 <meta property="og:url" content="http://yoursite.com/2018/04/27/javascript/var-before/index.html">
 <meta property="og:site_name" content="Baldwin&#39;s Blogs">
-<meta property="og:description" content="简介不多说，直接上代码 12345678var num = 100;function fun() &amp;#123;    console.log(num); //undefined    var num = 10;    console.log(num); //10&amp;#125;fun(); 123456789var num = 100;function fun() &amp;#123;    var num;">
+<meta property="og:description" content="简介不多说，直接上代码 12345678var num = 100;function fun() &amp;#123;    console.log(num); //undefined    var num = 10;    console.log(num); //10&amp;#125;fun(); 等价于 =&amp;gt; 123456789var num = 100;function fun() &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-27T14:34:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js中的声明提前">
-<meta name="twitter:description" content="简介不多说，直接上代码 12345678var num = 100;function fun() &amp;#123;    console.log(num); //undefined    var num = 10;    console.log(num); //10&amp;#125;fun(); 123456789var num = 100;function fun() &amp;#123;    var num;">
+<meta name="twitter:description" content="简介不多说，直接上代码 12345678var num = 100;function fun() &amp;#123;    console.log(num); //undefined    var num = 10;    console.log(num); //10&amp;#125;fun(); 等价于 =&amp;gt; 123456789var num = 100;function fun() &amp;#123;">
 
 
 
@@ -398,6 +398,7 @@
       
         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>不多说，直接上代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(num); <span class="comment">//undefined</span></span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num); <span class="comment">//10</span></span><br><span class="line">&#125;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
+<p>等价于 =&gt;</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num;</span><br><span class="line">    <span class="built_in">console</span>.log(num); <span class="comment">//undefined</span></span><br><span class="line">    num = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(num); <span class="comment">//10</span></span><br><span class="line">&#125;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
 <p><strong>其实上面2段代码是等价的</strong> var 声明一个变量的时候，会把它提前到改作用域的最前面。</p>
 <p><strong>参考</strong></p>
