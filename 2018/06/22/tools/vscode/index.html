@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介在 Build 2015 大会上，微软除了发布了 Microsoft Edge 浏览器和新的 Windows 10 系统外，最大的惊喜莫过于宣布推出免费跨平台的 Visual Studio Code 编辑器了！ Visual Studio Code (简称 VS Code / VSC) 是一款免费开源的现代化轻量级代码编辑器，支持几乎所有主流的开发语言的语法高亮、智能代码补全、自定义快捷键、括">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Baldwin&#39;s Blogs">
+<meta property="og:url" content="http://yoursite.com/2018/06/22/tools/vscode/index.html">
+<meta property="og:site_name" content="Baldwin&#39;s Blogs">
+<meta property="og:description" content="简介在 Build 2015 大会上，微软除了发布了 Microsoft Edge 浏览器和新的 Windows 10 系统外，最大的惊喜莫过于宣布推出免费跨平台的 Visual Studio Code 编辑器了！ Visual Studio Code (简称 VS Code / VSC) 是一款免费开源的现代化轻量级代码编辑器，支持几乎所有主流的开发语言的语法高亮、智能代码补全、自定义快捷键、括">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/164265bcbb180f2a?w=716&h=297&f=jpeg&s=11119">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/1642649c5a19c476?w=2492&h=1646&f=jpeg&s=484545">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/1642640f05861b03?w=3236&h=1884&f=jpeg&s=683617">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/16426426314ce1bc?w=1872&h=584&f=jpeg&s=113754">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/1642643c622c2124?w=1594&h=822&f=jpeg&s=121451">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/16425d4d58fc2140?w=3358&h=1952&f=jpeg&s=837298">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/1642653585b4c615?w=2598&h=1760&f=png&s=590705">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/1642654205669878?w=1078&h=650&f=png&s=92486">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/26/1643c8380f113f53?w=3360&h=2100&f=png&s=1494263">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/16426571f596b0e7?w=640&h=432&f=jpeg&s=36292">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/164264a6743d2e0a?w=2492&h=1646&f=jpeg&s=484545">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/16426c730b2e55d9?w=2128&h=1158&f=jpeg&s=348398">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/16426c81abd0e5d1?w=1896&h=1074&f=jpeg&s=225873">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/22/16426d268d8774e0?w=2422&h=1336&f=jpeg&s=443289">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/26/1643ca2a8c08f719?w=2338&h=910&f=jpeg&s=224225">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/26/1643ca2c2b20b767?w=2398&h=1258&f=jpeg&s=497151">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/23/1642b9e0392f51e1?w=2704&h=1492&f=jpeg&s=541497">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/23/1642ba14d03ebea9?w=2246&h=918&f=jpeg&s=267711">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/23/1642bead1a1916bb?w=3174&h=1924&f=jpeg&s=275874">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/23/1642bf440388426f?w=2138&h=966&f=jpeg&s=161244">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/23/1642bf7533f99cb9?w=1974&h=1164&f=jpeg&s=215291">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/23/1642bfc5e06c84db?w=1990&h=814&f=jpeg&s=131631">
+<meta property="og:updated_time" content="2018-08-15T02:15:55.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Baldwin&#39;s Blogs">
+<meta name="twitter:description" content="简介在 Build 2015 大会上，微软除了发布了 Microsoft Edge 浏览器和新的 Windows 10 系统外，最大的惊喜莫过于宣布推出免费跨平台的 Visual Studio Code 编辑器了！ Visual Studio Code (简称 VS Code / VSC) 是一款免费开源的现代化轻量级代码编辑器，支持几乎所有主流的开发语言的语法高亮、智能代码补全、自定义快捷键、括">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/6/22/164265bcbb180f2a?w=716&h=297&f=jpeg&s=11119">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/22/tools/vscode/"/>
+
+
+
+
+
+  <title> | Baldwin's Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Baldwin's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">niceboybao@gmail.com</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/tools/vscode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baldwin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Baldwin's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T09:50:14+08:00">
+                2018-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/06/22/tools/vscode/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>在 <a href="https://www.iplaysoft.com/build-2015.html" target="_blank" rel="noopener">Build 2015</a> 大会上，微软除了发布了 Microsoft Edge 浏览器和新的 Windows 10 系统外，最大的惊喜莫过于宣布推出免费跨平台的 Visual Studio Code 编辑器了！</p>
+<p>Visual Studio Code (简称 VS Code / VSC) 是一款免费开源的现代化轻量级代码编辑器，支持几乎所有主流的开发语言的语法高亮、智能代码补全、自定义快捷键、括号匹配和颜色区分、代码片段、代码对比 Diff、GIT命令 等特性，支持插件扩展，并针对网页开发和云端应用开发做了优化。软件跨平台支持 Win、Mac 以及 Linux，运行流畅，可谓是微软的良心之作……</p>
+<h2 id="为什么选择VS-Code工程开发"><a href="#为什么选择VS-Code工程开发" class="headerlink" title="为什么选择VS Code工程开发"></a>为什么选择VS Code工程开发</h2><p><img src="https://user-gold-cdn.xitu.io/2018/6/22/164265bcbb180f2a?w=716&amp;h=297&amp;f=jpeg&amp;s=11119" alt=""></p>
+<p>作为前端开发的我，之前的开发过程中一直用的是<code>Atom</code>这一款IDE，再配上了好看的主题插件很nice，Atom的界面是真心好看，但是插件装多了你们真的不觉得卡吗，<code>VS Code</code>比<code>Atom</code>更加的流畅，比<code>webstorm</code>更轻量级。一次偶然换的工作后，项目组要求统一IDE，让我了解到了<code>VS Code</code>，这边简单介绍下<code>VS Code</code>日常开发的需求。</p>
+<h2 id="VS-Code精选主题"><a href="#VS-Code精选主题" class="headerlink" title="VS Code精选主题"></a>VS Code精选主题</h2><p><img src="https://user-gold-cdn.xitu.io/2018/6/22/1642649c5a19c476?w=2492&amp;h=1646&amp;f=jpeg&amp;s=484545" alt=""></p>
+<h3 id="主题插件安装流程"><a href="#主题插件安装流程" class="headerlink" title="主题插件安装流程"></a>主题插件安装流程</h3><p>首先先简单介绍些主题插件的安装流程：</p>
+<blockquote>
+<p>第一步，点击扩展商店搜索你要找的插件名称如<code>Atom One Dark Theme</code>，点击安装；</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/1642640f05861b03?w=3236&amp;h=1884&amp;f=jpeg&amp;s=683617" alt=""></p>
+<blockquote>
+<p>第二部，安装好了之后只是证明你本地的VS Code上面有这个插件了，还需要将<strong>当前使用的主题插件</strong>切换成你想要的才行；</p>
+</blockquote>
+<p>①点击右下角的设置按钮，进入命令面板；</p>
+<p>②搜索<code>颜色主题</code>关键字；</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/16426426314ce1bc?w=1872&amp;h=584&amp;f=jpeg&amp;s=113754" alt=""> </p>
+<p>③点击想要的主题完成切换。 </p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/1642643c622c2124?w=1594&amp;h=822&amp;f=jpeg&amp;s=121451" alt=""></p>
+<p>一个编辑器界面的好看与否，真心挺重要的，之前对atom一直恋恋不舍，完全就是因为它的主题界面太优雅了。下图是笔者配置好的VS Code界面截图，下面推荐几款好看的主题： </p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/16425d4d58fc2140?w=3358&amp;h=1952&amp;f=jpeg&amp;s=837298" alt=""></p>
+<h3 id="VS-Code-主题插件列表-推荐"><a href="#VS-Code-主题插件列表-推荐" class="headerlink" title="VS Code 主题插件列表(推荐)"></a>VS Code 主题插件列表(推荐)</h3><h4 id="1-One-Dark-Pro"><a href="#1-One-Dark-Pro" class="headerlink" title="1. One Dark Pro"></a>1. One Dark Pro</h4><p>One Dark Pro的主题界面效果如下（推荐指数5星） <a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_blank" rel="noopener">One Dark Pro</a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/1642653585b4c615?w=2598&amp;h=1760&amp;f=png&amp;s=590705" alt=""></p>
+<h4 id="2-Atom-One-Dark-Theme"><a href="#2-Atom-One-Dark-Theme" class="headerlink" title="2. Atom One Dark Theme"></a>2. Atom One Dark Theme</h4><p>Atom One Dark Theme的主题界面效果如下（推荐指数5星） <a href="https://marketplace.visualstudio.com/items?itemName=akamud.vscode-theme-onedark" target="_blank" rel="noopener">Atom One Dark Theme</a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/1642654205669878?w=1078&amp;h=650&amp;f=png&amp;s=92486" alt=""></p>
+<h4 id="3-Eva-Theme"><a href="#3-Eva-Theme" class="headerlink" title="3. Eva Theme"></a>3. Eva Theme</h4><p>Eva Theme的主题界面效果如下（推荐指数5星） <a href="https://marketplace.visualstudio.com/items?itemName=fisheva.eva-theme" target="_blank" rel="noopener">Eva Theme</a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/26/1643c8380f113f53?w=3360&amp;h=2100&amp;f=png&amp;s=1494263" alt=""></p>
+<h4 id="4-Material-Palenight-Theme"><a href="#4-Material-Palenight-Theme" class="headerlink" title="4. Material Palenight Theme"></a>4. Material Palenight Theme</h4><p>Material Palenight Theme的主题界面效果如下（推荐指数5星） <a href="https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme" target="_blank" rel="noopener">Material Palenight Theme</a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/16426571f596b0e7?w=640&amp;h=432&amp;f=jpeg&amp;s=36292" alt=""></p>
+<blockquote>
+<p>更多Visual Studio Code 主题插件请参考<a href="https://marketplace.visualstudio.com/search?target=VSCode&amp;category=Themes&amp;sortBy=Downloads" target="_blank" rel="noopener">VS Code Downloads</a></p>
+</blockquote>
+<h2 id="VS-Code精选插件"><a href="#VS-Code精选插件" class="headerlink" title="VS Code精选插件"></a>VS Code精选插件</h2><p>VS Code所有的插件都可以在<a href="https://marketplace.visualstudio.com/search?target=VSCode&amp;category=Themes&amp;sortBy=Downloads" target="_blank" rel="noopener">VS Code Downloads</a>插件库中找到，如下图：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/164264a6743d2e0a?w=2492&amp;h=1646&amp;f=jpeg&amp;s=484545" alt=""></p>
+<blockquote>
+<p>Auto Close Tag</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" rel="noopener">Auto Close Tag</a>：匹配标签，关闭对应的标签。对于HTML/XML很实用。</p>
+<blockquote>
+<p>Auto Rename Tag</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="noopener">Auto Rename Tag</a>：改变标签的时候同时改动开闭合标签；对于HTML/XML很实用。</p>
+<blockquote>
+<p>HTML CSS Support</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css" target="_blank" rel="noopener">HTML CSS Support</a> : 这个也是HTML必备插件之一。</p>
+<blockquote>
+<p>CSS Peek</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek" target="_blank" rel="noopener">CSS Peek</a> ： html和css中关联css的跳转</p>
+<blockquote>
+<p>Code Runner</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner" target="_blank" rel="noopener">Code Runner</a> : 代码编译运行看结果，支持众多语言</p>
+<blockquote>
+<p>Git History</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory" target="_blank" rel="noopener">Git History</a> : 查看git分支提交日志的插件</p>
+<blockquote>
+<p>Git History Diff</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=huizhou.githd" target="_blank" rel="noopener">Git History Diff</a> : 寻找每一个git分支上面提交过的节点，并可以对比差异性。</p>
+<blockquote>
+<p>Path Autocomplete</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete" target="_blank" rel="noopener">Path Autocomplete</a> : 路径智能补全插件。</p>
+<blockquote>
+<p>Path Intellisense</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense" target="_blank" rel="noopener">Path Intellisense</a> ： 路径智能提示插件。</p>
+<blockquote>
+<p>beautify</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify" target="_blank" rel="noopener">beautify</a> ：良好的拓展性，可以格式化JSON|JS|HTML|CSS|SCSS,比内置格式化好用；<strong>但是react工程的jsx文件用beautify插件格式化会乱掉，建议不要用</strong></p>
+<blockquote>
+<p>Prettier - Code formatter</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener">Prettier - Code formatter</a> ： 代码格式化插件，主要针对工程中的JavaScript / TypeScript / CSS</p>
+<blockquote>
+<p>Prettier Now</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=remimarsal.prettier-now" target="_blank" rel="noopener">Prettier Now</a> ： 支持语言比较全面的代码格式化插件，主要是支持jsx /tsx ，还有sass / less等(<strong>问的react工程基本上就是用这2个Prettier插件格式化代码</strong>)</p>
+<blockquote>
+<p>Terminal</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.terminal" target="_blank" rel="noopener">Terminal</a> ： vs code 内置的命令行插件，也比较实用。</p>
+<blockquote>
+<p>Bookmarks</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks" target="_blank" rel="noopener">Bookmarks</a> ： 这个插件支持在文件特定的行做标记，更好的提高开发效率。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/16426c730b2e55d9?w=2128&amp;h=1158&amp;f=jpeg&amp;s=348398" alt=""></p>
+<blockquote>
+<p>Bracket Pair Colorizer</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer" target="_blank" rel="noopener">Bracket Pair Colorizer</a> ：很多括号的情况下，这个插件可以做一个颜色的区分，代码一目了然。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/16426c81abd0e5d1?w=1896&amp;h=1074&amp;f=jpeg&amp;s=225873" alt=""></p>
+<blockquote>
+<p>Chinese (Simplified) Language Pack for Visual Studio Code</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans" target="_blank" rel="noopener">Chinese (Simplified) Language Pack for Visual Studio Code</a> ： 适用于 VS Code 的中文（简体）语言包。</p>
+<blockquote>
+<p>filesize</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=mkxml.vscode-filesize" target="_blank" rel="noopener">filesize</a> ： 编辑器底部显示当前文件的大小。</p>
+<blockquote>
+<p>Markdown Preview Enhanced</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced" target="_blank" rel="noopener">Markdown Preview Enhanced</a> ： 本地Markdown文档预览插件。</p>
+<blockquote>
+<p>vscode-icons</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons" target="_blank" rel="noopener">vscode-icons</a> ： 一套vs code的图标插件。</p>
+<blockquote>
+<p>npm</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script" target="_blank" rel="noopener">npm</a> ： 不多说npm。</p>
+<blockquote>
+<p>open-in-browser</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=coderfee.open-html-in-browser" target="_blank" rel="noopener">open-in-browser</a> ： 一键在浏览器中打开</p>
+<blockquote>
+<p>Live Server</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank" rel="noopener">Live Server</a> ：一键开启本地服务。</p>
+<blockquote>
+<p>Local History</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=xyz.local-history" target="_blank" rel="noopener">Local History</a> ：<strong>个人感觉很有用</strong> 本地代码的一个保存日志，在没有git,svn，或者很长时间没有提交过代码的情况下，感觉挺实用，再也不怕代码回滚。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/22/16426d268d8774e0?w=2422&amp;h=1336&amp;f=jpeg&amp;s=443289" alt=""></p>
+<blockquote>
+<p>GitLens — Git supercharged</p>
+</blockquote>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens" target="_blank" rel="noopener">GitLens — Git supercharged</a> ： GitLens能增强Visual Studio代码中内置的Git功能。它帮助您通过Git blame注解和代码镜头直观地显示代码作者，无缝地导航和探索Git存储库，通过强大的比较命令获得有价值的见解。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/26/1643ca2a8c08f719?w=2338&amp;h=910&amp;f=jpeg&amp;s=224225" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/6/26/1643ca2c2b20b767?w=2398&amp;h=1258&amp;f=jpeg&amp;s=497151" alt=""></p>
+<h2 id="VS-Code常用快捷键"><a href="#VS-Code常用快捷键" class="headerlink" title="VS Code常用快捷键"></a>VS Code常用快捷键</h2><p>VS Code的快捷键有很多，需要具体的请仔细参考 <code>VS Code</code> =&gt; <code>右下角设置按钮</code> =&gt; <code>键盘快捷方式</code></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/23/1642b9e0392f51e1?w=2704&amp;h=1492&amp;f=jpeg&amp;s=541497" alt=""></p>
+<blockquote>
+<p>我们也可以<strong>自定义快捷键</strong>，在keybindings.json里面设置覆盖即可</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/23/1642ba14d03ebea9?w=2246&amp;h=918&amp;f=jpeg&amp;s=267711" alt=""></p>
+<p>快捷键完全是个人操作习惯，这里不多介绍，我常用的有这几个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打开命令面板    cmd + shift + p / F1</span><br><span class="line">打开设置页面    cmd + ,</span><br><span class="line">删除一行        cmd + E(自定义)</span><br><span class="line">添加书签        cmd + option + k</span><br><span class="line">代码格式化      control + opiton + B</span><br></pre></td></tr></table></figure>
+<h2 id="VS-Code-git代码管理实战"><a href="#VS-Code-git代码管理实战" class="headerlink" title="VS Code git代码管理实战"></a>VS Code git代码管理实战</h2><p>git现在是很常见的代码管理工具，VS Code 也有内置的git插件，当然，要是你觉得不完美，可以安装一些常用的git插件等，简单介绍下VS Code 下git的提交步骤。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/23/1642bead1a1916bb?w=3174&amp;h=1924&amp;f=jpeg&amp;s=275874" alt=""></p>
+<p>这里我以GitHub上面新建的一个仓库为例，仓库新建后默认分支是master，这里我在GitHub上新建了2个远程分支<code>develop01</code>和<code>develop02</code>，当你在VS Code中点击切换到某一个远程分支的时候，VS Code会自动给你创建一个和当前远程分支对应的本地分支，如<code>origin/develop02</code> 对应<code>develop02</code>，如<code>origin/master</code> 对应<code>master</code>,如上图所示。</p>
+<p>现在我们在master分支上面提交代码，</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/23/1642bf440388426f?w=2138&amp;h=966&amp;f=jpeg&amp;s=161244" alt=""></p>
+<ul>
+<li>第一步，先暂存要提交的文件</li>
+<li>第二步，填下提交日志</li>
+<li>第三步，点击<code>对勾按钮</code>完成提交</li>
+</ul>
+<p>提交好了之后还需要拉取git远程分支的代码才能推送。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/23/1642bf7533f99cb9?w=1974&amp;h=1164&amp;f=jpeg&amp;s=215291" alt=""></p>
+<ul>
+<li>第四步，拉取远程代码，解决冲突</li>
+<li>第五步，推送到远程分支上</li>
+</ul>
+<blockquote>
+<p>然后就没有然后了😝，提交完成。</p>
+</blockquote>
+<p>假如你因为工作需求的原因，需要在不同的分支上面提交不同的代码，那就涉及到分支的切换了。首先第一步，切换分支之前先提交代码，不然老是有报错日志，切换了分支后，本地的代码也会对应分支改变。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/23/1642bfc5e06c84db?w=1990&amp;h=814&amp;f=jpeg&amp;s=131631" alt=""></p>
+<blockquote>
+<p>如上图，master切换成develo01之后，master分支上刚提交的代码成了develo01上对应的代码。</p>
+</blockquote>
+<h2 id="你问我答"><a href="#你问我答" class="headerlink" title="你问我答"></a>你问我答</h2><h3 id="1-VS-Code-怎么更改默认的设置？"><a href="#1-VS-Code-怎么更改默认的设置？" class="headerlink" title="1.VS Code 怎么更改默认的设置？"></a>1.VS Code 怎么更改默认的设置？</h3><p>笔者使用的是mac，使用快捷键 <code>Com + ,</code> 打开用户默认设置界面，左边是默认设置，右边是自定义设置，根据个人工作场景而定吧，就像我这边就统一格式化代码缩进4格等,还可以设置忽略一些文件夹等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"explorer.confirmDelete"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 主题</span></span><br><span class="line">    <span class="string">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span>,</span><br><span class="line">    <span class="comment">// 小地图</span></span><br><span class="line">    <span class="string">"editor.minimap.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 主题风格One Dark Pro</span></span><br><span class="line">    <span class="string">"workbench.colorTheme"</span>: <span class="string">"One Dark Pro"</span>,</span><br><span class="line">    <span class="string">"window.zoomLevel"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">"extensions.autoUpdate"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 字体大小</span></span><br><span class="line">    <span class="string">"editor.fontSize"</span>: <span class="number">13</span>,</span><br><span class="line">    <span class="string">"editor.snippetSuggestions"</span>: <span class="string">"top"</span>,</span><br><span class="line">    <span class="string">"diffEditor.ignoreTrimWhitespace"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 设置格式化缩进4格</span></span><br><span class="line">    <span class="string">"prettier.tabWidth"</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="string">"vetur.format.defaultFormatter.html"</span>: <span class="string">"prettier"</span>,</span><br><span class="line">    <span class="string">"gitlens.advanced.messages"</span>: &#123;</span><br><span class="line">        <span class="string">"suppressShowKeyBindingsNotice"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"gitlens.historyExplorer.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"atomKeymap.promptV3Features"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"editor.multiCursorModifier"</span>: <span class="string">"ctrlCmd"</span>,</span><br><span class="line">    <span class="comment">//粘贴自动格式化</span></span><br><span class="line">    <span class="string">"editor.formatOnPaste"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">//保存自动格式化</span></span><br><span class="line">    <span class="string">"editor.formatOnSave"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 用来忽略工程打开的文件夹</span></span><br><span class="line">    <span class="string">"files.exclude"</span>: &#123;</span><br><span class="line">        <span class="string">"**/.vscode"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/.DS_Store"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/.history"</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/nbproject"</span>:<span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 用来忽略搜索的文件夹</span></span><br><span class="line">    <span class="string">"search.exclude"</span>: &#123;</span><br><span class="line">        <span class="string">"**/node_modules/**"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/bower_components/**"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/image/**"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/*.xml"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/.history/**"</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/nbproject/**"</span>:<span class="literal">true</span>,</span><br><span class="line">        <span class="string">"**/vscode/**"</span>:<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 创建和更新代码的头部信息作者</span></span><br><span class="line">    <span class="string">"fileheader.Author"</span>: <span class="string">"Baldwin"</span>,</span><br><span class="line">    <span class="string">"fileheader.LastModifiedBy"</span>: <span class="string">"Baldwin"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-假如我几天没有提交代码了（git），今天突然发现代码youbug，需要还原到昨天版本，VS-Code能做到吗？"><a href="#2-假如我几天没有提交代码了（git），今天突然发现代码youbug，需要还原到昨天版本，VS-Code能做到吗？" class="headerlink" title="2.假如我几天没有提交代码了（git），今天突然发现代码youbug，需要还原到昨天版本，VS Code能做到吗？"></a>2.假如我几天没有提交代码了（git），今天突然发现代码youbug，需要还原到昨天版本，VS Code能做到吗？</h3><p>能。参考上面的 VS Code插件 <code>Local History</code></p>
+<blockquote>
+<p>基本上就介绍到这里（有好的插件或者主题欢迎留言，一定给update上去），希望对你使用VS Code有帮助，有问题欢迎留言，一定积极回复<br>😑😑😑</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/27/javascript/var-before/" rel="next" title="js中的声明提前">
+                <i class="fa fa-chevron-left"></i> js中的声明提前
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Baldwin" />
+            
+              <p class="site-author-name" itemprop="name">Baldwin</p>
+              <p class="site-description motion-element" itemprop="description">既然无法破壳而出，那就努力拓展空间的边界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/niceboybao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/58ec89745c497d0062c633f7/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/baldwin9191" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么选择VS-Code工程开发"><span class="nav-number">1.1.</span> <span class="nav-text">为什么选择VS Code工程开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code精选主题"><span class="nav-number">1.2.</span> <span class="nav-text">VS Code精选主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题插件安装流程"><span class="nav-number">1.2.1.</span> <span class="nav-text">主题插件安装流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VS-Code-主题插件列表-推荐"><span class="nav-number">1.2.2.</span> <span class="nav-text">VS Code 主题插件列表(推荐)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-One-Dark-Pro"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1. One Dark Pro</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Atom-One-Dark-Theme"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2. Atom One Dark Theme</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Eva-Theme"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">3. Eva Theme</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Material-Palenight-Theme"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">4. Material Palenight Theme</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code精选插件"><span class="nav-number">1.3.</span> <span class="nav-text">VS Code精选插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code常用快捷键"><span class="nav-number">1.4.</span> <span class="nav-text">VS Code常用快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VS-Code-git代码管理实战"><span class="nav-number">1.5.</span> <span class="nav-text">VS Code git代码管理实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你问我答"><span class="nav-number">1.6.</span> <span class="nav-text">你问我答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-VS-Code-怎么更改默认的设置？"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.VS Code 怎么更改默认的设置？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-假如我几天没有提交代码了（git），今天突然发现代码youbug，需要还原到昨天版本，VS-Code能做到吗？"><span class="nav-number">1.6.2.</span> <span class="nav-text">2.假如我几天没有提交代码了（git），今天突然发现代码youbug，需要还原到昨天版本，VS Code能做到吗？</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baldwin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    博客主页总访问量: <span id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("D9I3UknceTftjKIFeCKrLpVE-gzGzoHsz", "Ayjznf7yPSo72mW1tHPIG7Fe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
