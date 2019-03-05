@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Others," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="先直接怼成品  工程项目开源在GitHub上，平时迭代提交一些功能后，点击对应的Jenkins工程一键构建，即完成发布。是不是听了后感觉很高大上！   听起来是不是感觉很省事，平时我们要发布工程代码到自己的服务器上，像那种(vue/angular/react)项目的话，总是要跑很多npm命令，然后打包啊，移动啊，解压啊。想想每次都这样是不是很浪费时间，要是一个工程build10分钟，那你还要时刻">
+<meta name="keywords" content="Others">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云服务器（2、jenkins实现前端自动化部署）">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/others/jenkins/index.html">
+<meta property="og:site_name" content="Baldwin&#39;s Blogs">
+<meta property="og:description" content="先直接怼成品  工程项目开源在GitHub上，平时迭代提交一些功能后，点击对应的Jenkins工程一键构建，即完成发布。是不是听了后感觉很高大上！   听起来是不是感觉很省事，平时我们要发布工程代码到自己的服务器上，像那种(vue/angular/react)项目的话，总是要跑很多npm命令，然后打包啊，移动啊，解压啊。想想每次都这样是不是很浪费时间，要是一个工程build10分钟，那你还要时刻">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/23/167400823048bfc5?w=2764&h=1380&f=png&s=492768">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/23/16740077dfb14521?w=2586&h=1434&f=png&s=325748">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16743b3189d3de9b?w=1430&h=750&f=png&s=269996">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16743b80788c6b05?w=946&h=456&f=png&s=240911">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16743bd938fc2b36?w=1102&h=570&f=png&s=453581">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16743dbfb2f4a727?w=918&h=506&f=png&s=214175">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/167447dddbfa6c8c?w=1130&h=722&f=png&s=371699">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16743d429ba3d877?w=1334&h=716&f=png&s=273209">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16744613971d843c?w=1350&h=716&f=png&s=292501">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/167446287beaab37?w=1322&h=704&f=png&s=365738">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/167447a0ac85ad96?w=1324&h=734&f=png&s=150193">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/167447a38531e58f?w=1354&h=746&f=png&s=120436">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16744f0a146e0371?w=2178&h=1172&f=png&s=228124">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16744f16200fb34b?w=1982&h=1004&f=png&s=241624">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16744f4ef3cc587c?w=1912&h=960&f=png&s=124160">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/16744f5397a00cb2?w=2058&h=1012&f=png&s=179376">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/167450623983468a?w=1846&h=948&f=png&s=264358">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/1674501cca4b660d?w=1438&h=710&f=png&s=140156">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/167450b38dc2d974?w=1924&h=906&f=png&s=128811">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/24/167450d36751e973?w=2174&h=1072&f=png&s=285217">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/7/16788160fe1224a0?w=720&h=300&f=png&s=55606">
+<meta property="og:updated_time" content="2019-03-05T08:51:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里云服务器（2、jenkins实现前端自动化部署）">
+<meta name="twitter:description" content="先直接怼成品  工程项目开源在GitHub上，平时迭代提交一些功能后，点击对应的Jenkins工程一键构建，即完成发布。是不是听了后感觉很高大上！   听起来是不是感觉很省事，平时我们要发布工程代码到自己的服务器上，像那种(vue/angular/react)项目的话，总是要跑很多npm命令，然后打包啊，移动啊，解压啊。想想每次都这样是不是很浪费时间，要是一个工程build10分钟，那你还要时刻">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/11/23/167400823048bfc5?w=2764&h=1380&f=png&s=492768">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":null,"post_header":null,"post_body":"slideDownIn","coll_header":null,"sidebar":null}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/others/jenkins/"/>
+
+
+
+
+
+  <title>阿里云服务器（2、jenkins实现前端自动化部署） | Baldwin's Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Baldwin's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">niceboybao@gmail.com</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            文章分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            技术标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            博客归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我的简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            关键字搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/others/jenkins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baldwin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Baldwin's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">阿里云服务器（2、jenkins实现前端自动化部署）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T16:51:00+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Others/" itemprop="url" rel="index">
+                    <span itemprop="name">Others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2019/03/05/others/jenkins/" class="leancloud_visitors" data-flag-title="阿里云服务器（2、jenkins实现前端自动化部署）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>先直接怼成品</p>
+</blockquote>
+<p>工程项目开源在GitHub上，平时迭代提交一些功能后，点击对应的<code>Jenkins</code>工程一键构建，即完成发布。是不是听了后感觉很高大上！</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/23/167400823048bfc5?w=2764&amp;h=1380&amp;f=png&amp;s=492768" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/23/16740077dfb14521?w=2586&amp;h=1434&amp;f=png&amp;s=325748" alt=""></p>
+<p>听起来是不是感觉很省事，平时我们要发布工程代码到自己的服务器上，像那种(vue/angular/react)项目的话，总是要跑很多npm命令，然后打包啊，移动啊，解压啊。想想每次都这样是不是很浪费时间，要是一个工程build10分钟，那你还要时刻看着，以便接着运行命令。</p>
+<blockquote>
+<p>如何解决问题呢？接下来我们进入正文。</p>
+</blockquote>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><code>Jenkins</code>是一款开源自动化服务器，旨在自动化连续集成和交付软件所涉及的重复技术任务。 <code>Jenkins</code>是基于Java的，可以从Ubuntu软件包安装，也可以通过下载和运行其Web应用程序ARchive（WAR）文件进行安装 - 构成一个完整的Web应用程序的集合，该文件旨在在服务器上运行。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>自己的GitHub账号，及想要部署的仓库</li>
+<li>有自己的云服务器(小编的为<code>阿里云Ubuntu 16.04 64位</code>)</li>
+<li>云服务器已做过nginx配置（未做的请参考<a href="https://juejin.im/post/5be5593a6fb9a049ab0d1d40" target="_blank" rel="noopener">阿里云服务器（1、nginx配置实战）</a>）</li>
+</ul>
+<p>GitHub账号方便<code>Jenkins</code>直接从平台上拉取代码，然后做一系列操作，云服务器用于安装<code>Jenkins</code>不用每次用都需要启动，小编的为<code>阿里云Ubuntu 16.04 64位</code>，没有对号入座的请酌情参考。在配置<code>Jenkins</code>前需要先配置下nginx，需要的请参考我的文档 <a href="https://juejin.im/post/5be5593a6fb9a049ab0d1d40" target="_blank" rel="noopener">阿里云服务器（1、nginx配置实战）</a></p>
+<h2 id="先安装java"><a href="#先安装java" class="headerlink" title="先安装java"></a>先安装java</h2><p><code>Jenkins</code>基于Java， 所以需要先安装java。到官网下载即可<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">jdk-8u191-linux-x64.tar.gz</a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/16743b3189d3de9b?w=1430&amp;h=750&amp;f=png&amp;s=269996" alt=""></p>
+<p>我一般习惯把安装的软件放到目录/usr/local下。下载上传好后，解压java到相应目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-8u65-linux-x64.tar.gz /usr/local</span><br></pre></td></tr></table></figure>
+<p>编辑环境变量，在/etc/profile文件中添加环境变量，Linux的所有用户都可以使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<p>在文件最后添加内容如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk1.8.0_191</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jart</span><br></pre></td></tr></table></figure>
+<p>到此，java已安装完成，检查时候出现如下图即安装完成</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/16743b80788c6b05?w=946&amp;h=456&amp;f=png&amp;s=240911" alt=""></p>
+<h2 id="后安装Jenkins"><a href="#后安装Jenkins" class="headerlink" title="后安装Jenkins"></a>后安装Jenkins</h2><p>包含在默认Ubuntu软件包中的<code>Jenkins</code>版本往往落后于项目本身的最新版本。 为了利用最新的修复和功能，我们将使用项目维护的软件包来安装<code>Jenkins</code>。</p>
+<p>首先，我们将存储库密钥添加到系统。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+<p>添加密钥后，系统将返回 <code>OK</code> 。 接下来，我们将Debian包存储库地址附加到服务器的<code>sources.list ：</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</span><br></pre></td></tr></table></figure>
+<p>当这两个都到位时，我们将运行update ，以便apt-get将使用新的存储库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>最后，我们将安装<code>Jenkins</code>及其依赖项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
+<h2 id="启动Jenkins"><a href="#启动Jenkins" class="headerlink" title="启动Jenkins"></a>启动Jenkins</h2><p>使用systemctl我们将启动<code>Jenkins</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start jenkins</span><br></pre></td></tr></table></figure>
+<p>由于systemctl不显示输出，我们将使用其status命令来验证它是否成功启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status jenkins</span><br></pre></td></tr></table></figure>
+<p>如果一切顺利，输出的开始应显示服务处于活动状态。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/16743bd938fc2b36?w=1102&amp;h=570&amp;f=png&amp;s=453581" alt=""></p>
+<blockquote>
+<p>注意：我在安装的过程中遇到了java路径找不到的问题，解决方案是建立一个软连接即可，请参考 <a href="https://blog.csdn.net/yi_suo_yan_yu/article/details/81981789" target="_blank" rel="noopener">ERROR: No Java executable found in current PATH</a></p>
+</blockquote>
+<h2 id="设置防火墙（ufw）"><a href="#设置防火墙（ufw）" class="headerlink" title="设置防火墙（ufw）"></a>设置防火墙（ufw）</h2><p>ufw是一个主机端的iptables类防火墙配置工具 安装的话，ubuntu很友好，一般都会给安装命令的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ufw</span><br></pre></td></tr></table></figure>
+<p>开启，建议默认关闭所有外部访问</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw enable</span><br><span class="line">sudo ufw default deny</span><br></pre></td></tr></table></figure>
+<p>默认情况下，<code>Jenkins</code>在端口8080上运行，因此我们将使用ufw打开该端口：(自定义的端口需另外开启)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 8080</span><br></pre></td></tr></table></figure>
+<p>查看防火墙状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/16743dbfb2f4a727?w=918&amp;h=506&amp;f=png&amp;s=214175" alt=""></p>
+<blockquote>
+<p>注意：既然开启了防火墙，那不要吧自己给墙了，比如<code>ssh</code>,<code>nginx</code>,<code>http</code>,<code>https</code>等这些端口可别忘记打开了。</p>
+</blockquote>
+<p>可以使用<code>sudo netstat -plntu</code> 查看端口占用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -plntu</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/167447dddbfa6c8c?w=1130&amp;h=722&amp;f=png&amp;s=371699" alt=""></p>
+<p>然后根据端口占用情况按需开启防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 80  #允许外部访问80端口(nginx默认端口)</span><br><span class="line">sudo ufw allow ssh  #ssh默认端口</span><br><span class="line">sudo ufw allow http  #http默认端口</span><br><span class="line">sudo ufw allow https  #https默认端口</span><br><span class="line">sudo ufw allow 9180  #Jenkins自定义端口端口</span><br></pre></td></tr></table></figure>
+<h2 id="自定义Jenkins端口"><a href="#自定义Jenkins端口" class="headerlink" title="自定义Jenkins端口"></a>自定义Jenkins端口</h2><p><code>Jenkins</code> 默认端口是8080，在配置文件<code>/etc/default/jenkins</code> 中定义。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> UMASK=027</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> port for HTTP connector (default 8080; disable with -1)</span><br><span class="line">HTTP_PORT=9180</span><br></pre></td></tr></table></figure>
+<p>自定义好端口后，需要重启下<code>Jenkins</code>，打开<code>http:// ip_address_or_domain_name :8080</code>应该看到”解锁<code>Jenkins</code>“屏幕</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start jenkins #启动</span><br><span class="line">sudo systemctl status jenkins #查看</span><br><span class="line">sudo systemctl restart jenkins #重启</span><br></pre></td></tr></table></figure>
+<h2 id="配置Jenkins"><a href="#配置Jenkins" class="headerlink" title="配置Jenkins"></a>配置Jenkins</h2><p><code>Jenkins</code>安装完成后，打开<code>http:// ip_address_or_domain_name :8080</code>应该看到”解锁<code>Jenkins</code>“屏幕如下图： <img src="https://user-gold-cdn.xitu.io/2018/11/24/16743d429ba3d877?w=1334&amp;h=716&amp;f=png&amp;s=273209" alt=""></p>
+<p>按照提示 输入如下命令获取到密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /var/lib/jenkins/secrets/initialAdminPassword</span><br></pre></td></tr></table></figure>
+<p>将获取的密码字符串粘贴到password字段中，点击继续，跳转到插件安装页面</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/16744613971d843c?w=1350&amp;h=716&amp;f=png&amp;s=292501" alt=""></p>
+<p>如果是<code>Jenkins</code>小白的话，还是建议用<code>推荐的方式</code>安装插件,安装过程中需要比较长的一段时间。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/167446287beaab37?w=1322&amp;h=704&amp;f=png&amp;s=365738" alt=""></p>
+<p>安装完成后，系统将提示您设置第一个管理用户。 可以跳过此步骤，并使用上面使用的初始密码作为admin继续，但是我们将花一点时间创建用户。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/167447a0ac85ad96?w=1324&amp;h=734&amp;f=png&amp;s=150193" alt=""></p>
+<blockquote>
+<p>注意：默认<code>Jenkins</code>服务器未加密，因此使用此表单提交的数据不受保护。 当您准备好使用此安装时，请按照指南<a href="https://www.howtoing.com/how-to-configure-jenkins-with-ssl-using-an-nginx-reverse-proxy/" target="_blank" rel="noopener">如何使用Nginx反向代理将SSL配置为<code>Jenkins</code> 。</a> 这将保护用户凭据和关于通过Web界面发送的构建的信息。</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/167447a38531e58f?w=1354&amp;h=746&amp;f=png&amp;s=120436" alt=""></p>
+<blockquote>
+<p>注意：小编在安装<code>Jenkins</code>后，有出现过登录页白屏的情况，解决方案如下 <a href="https://blog.csdn.net/kuangay/article/details/80628459" target="_blank" rel="noopener">jenkins配置权限不对导致无法登陆或者空白页面解决办法</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"&gt;</span><br><span class="line">    &lt;denyAnonymousReadAccess&gt;true&lt;/denyAnonymousReadAccess&gt;</span><br><span class="line">&lt;/authorizationStrategy&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="用Jenkins自动化部署一个GitHub工程"><a href="#用Jenkins自动化部署一个GitHub工程" class="headerlink" title="用Jenkins自动化部署一个GitHub工程"></a>用Jenkins自动化部署一个GitHub工程</h2><p>登录<code>Jenkins</code>后，我们先新建一个任务</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/16744f0a146e0371?w=2178&amp;h=1172&amp;f=png&amp;s=228124" alt=""></p>
+<p>输入一个任务名称，选择构建一个自由风格的软件项目</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/16744f16200fb34b?w=1982&amp;h=1004&amp;f=png&amp;s=241624" alt=""></p>
+<p>配置过程中可适当写点描述，源码管理选择git，然后贴上你GitHub上对应要构建的仓库克隆链接，可对应的分支。如下图： <img src="https://user-gold-cdn.xitu.io/2018/11/24/16744f4ef3cc587c?w=1912&amp;h=960&amp;f=png&amp;s=124160" alt=""></p>
+<p>在构建里面输入你拉取代码到<code>Jenkins</code>工作环境后，需要执行的一些命令行，如npm install,build等。 <img src="https://user-gold-cdn.xitu.io/2018/11/24/16744f5397a00cb2?w=2058&amp;h=1012&amp;f=png&amp;s=179376" alt=""></p>
+<blockquote>
+<p>因为我是一个react工程，所以我先执行npm install,后打包构建，最后移到我服务器的根目录下面，即完成发布。命令如下：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">echo 'check project path'</span><br><span class="line">pwd</span><br><span class="line">ls</span><br><span class="line">echo 'check npm &amp;&amp; node version'</span><br><span class="line">npm --version</span><br><span class="line">node --version</span><br><span class="line">echo 'start npm install'</span><br><span class="line">npm install</span><br><span class="line">echo 'start build project'</span><br><span class="line">npm run build-prod</span><br><span class="line">tar czvf www.tar.gz ./www/*</span><br><span class="line">echo 'delete dist and cache-loader'</span><br><span class="line">rm -rf www/</span><br><span class="line">rm -rf .cache-loader/</span><br><span class="line">mv -f www.tar.gz /usr/share/nginx/html/pc</span><br><span class="line">cd /usr/share/nginx/html/pc</span><br><span class="line">echo 'delete old dist'</span><br><span class="line">rm -rf www/</span><br><span class="line">tar -xzvf www.tar.gz</span><br><span class="line">rm -rf www.tar.gz</span><br></pre></td></tr></table></figure>
+<p>构建完成后，显示蓝色即为构建成功，可以选择具体一次的构建，里面还可以看构建日志</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/167450623983468a?w=1846&amp;h=948&amp;f=png&amp;s=264358" alt=""></p>
+<blockquote>
+<p>注意：一个工程首次构建的话，为了保险起见，把工程clone下来后，先在工程对应的文件下，把需要执行的命令跑一遍，一步步测试成功后，在贴到<code>Jenkins</code>里面一键构建。</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/1674501cca4b660d?w=1438&amp;h=710&amp;f=png&amp;s=140156" alt=""></p>
+<p>默认<code>Jenkins</code> 各个工程路径路径为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/jenkins/workspace/</span><br></pre></td></tr></table></figure>
+<p>默认<code>Jenkins</code> 各个工程build详细结果的路径为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/jenkins/jobs/</span><br></pre></td></tr></table></figure>
+<h2 id="其他构建场景"><a href="#其他构建场景" class="headerlink" title="其他构建场景"></a>其他构建场景</h2><p><code>Jenkins</code>比较常见的除了构建自由风格工程外，还可以构建一条pipeline（中文名：流水线）</p>
+<p>新建任务的时候，选择pipeline,再选择pipeline script,用pipeline语法编辑每个管道要执行的步骤即可，如图：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/167450b38dc2d974?w=1924&amp;h=906&amp;f=png&amp;s=128811" alt=""></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pipeline&#123;</span><br><span class="line">    agent any</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage('Build') &#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                echo 'This is a build step'</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage('Test') &#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                echo 'This is a test step'</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage('Deploy') &#123;</span><br><span class="line">            steps&#123;</span><br><span class="line">                echo 'This is a deploy step'</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样构建完后，构建步骤一目了然</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/24/167450d36751e973?w=2174&amp;h=1072&amp;f=png&amp;s=285217" alt=""></p>
+<blockquote>
+<p>小编后续讲发布一篇在服务器搭建gitlab的文档，那时可以选择用pipeline构建自己的gitlab工程。</p>
+</blockquote>
+<h2 id="遇到的问题及解决方案"><a href="#遇到的问题及解决方案" class="headerlink" title="遇到的问题及解决方案"></a>遇到的问题及解决方案</h2><ul>
+<li><p><a href="https://blog.csdn.net/yi_suo_yan_yu/article/details/81981789" target="_blank" rel="noopener">ERROR: No Java executable found in current PATH</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/w294954902/article/details/82587295" target="_blank" rel="noopener">jenkins转换显示语言为中文简体（jenkins汉化）</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/justheretobe/article/details/51843178" target="_blank" rel="noopener">ubuntu的ufw如何开放特定端口?</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/k_young1997/article/details/81782289" target="_blank" rel="noopener">ssh开启防火墙情况下远程连接服务器【解决密码正确但拒绝访问问题】</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/kuangay/article/details/80628459" target="_blank" rel="noopener">jenkins配置权限不对导致无法登陆或者空白页面解决办法</a></p>
+</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/7/16788160fe1224a0?w=720&amp;h=300&amp;f=png&amp;s=55606" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Others/" rel="tag"># Others</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/others/nginx/" rel="next" title="阿里云服务器（1、nginx配置实战）">
+                <i class="fa fa-chevron-left"></i> 阿里云服务器（1、nginx配置实战）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/others/books/" rel="prev" title="前端免费高清电子书(史上最全)">
+                前端免费高清电子书(史上最全) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Baldwin" />
+            
+              <p class="site-author-name" itemprop="name">Baldwin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/niceboybao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/58ec89745c497d0062c633f7/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/baldwin9191" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先安装java"><span class="nav-number">1.2.</span> <span class="nav-text">先安装java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后安装Jenkins"><span class="nav-number">1.3.</span> <span class="nav-text">后安装Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Jenkins"><span class="nav-number">1.4.</span> <span class="nav-text">启动Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置防火墙（ufw）"><span class="nav-number">1.5.</span> <span class="nav-text">设置防火墙（ufw）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Jenkins端口"><span class="nav-number">1.6.</span> <span class="nav-text">自定义Jenkins端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Jenkins"><span class="nav-number">1.7.</span> <span class="nav-text">配置Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用Jenkins自动化部署一个GitHub工程"><span class="nav-number">1.8.</span> <span class="nav-text">用Jenkins自动化部署一个GitHub工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他构建场景"><span class="nav-number">1.9.</span> <span class="nav-text">其他构建场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题及解决方案"><span class="nav-number">1.10.</span> <span class="nav-text">遇到的问题及解决方案</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baldwin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    <span id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("D9I3UknceTftjKIFeCKrLpVE-gzGzoHsz", "Ayjznf7yPSo72mW1tHPIG7Fe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

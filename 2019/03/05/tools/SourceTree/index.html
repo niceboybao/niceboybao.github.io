@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Tools," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介背景用过 git 版本管理的，对 SourceTree 应该不陌生的。它是 git 一个跨平台的 GUI 工具。界面很不错，而且功能也是很强大的。下面小编就针对SourceTree做一个小小的总结归纳，希望大家喜欢！   SourceTree下载官网下载地址Download for Mac OSX or Windows  这款软件是免费的，但是需要注册，登录授权；登录和授权这两个步骤没啥问题，">
+<meta name="keywords" content="Tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="还在记git命令？快试试SourceTree">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/tools/SourceTree/index.html">
+<meta property="og:site_name" content="Baldwin&#39;s Blogs">
+<meta property="og:description" content="简介背景用过 git 版本管理的，对 SourceTree 应该不陌生的。它是 git 一个跨平台的 GUI 工具。界面很不错，而且功能也是很强大的。下面小编就针对SourceTree做一个小小的总结归纳，希望大家喜欢！   SourceTree下载官网下载地址Download for Mac OSX or Windows  这款软件是免费的，但是需要注册，登录授权；登录和授权这两个步骤没啥问题，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/7/165133d70e07850c?w=2014&h=1136&f=jpeg&s=382751">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/7/165134d97b0fd364?w=1994&h=1046&f=jpeg&s=199683">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/29/1662456a7a39ec17?w=962&h=492&f=jpeg&s=81306">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/12/1648de4d9295a32c?w=1634&h=672&f=jpeg&s=66123">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/12/1648de986eb41ad5?w=1516&h=998&f=jpeg&s=159899">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/8/16518b219bc1a364?w=1656&h=864&f=jpeg&s=141377">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/8/16518b39cee5f3b1?w=1406&h=554&f=jpeg&s=96449">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/8/16518b4fe466d73a?w=1718&h=896&f=jpeg&s=152235">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/29/1662456db0f5ab13?w=2532&h=1338&f=jpeg&s=362141">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/29/166245bfa5ad4a58?w=976&h=708&f=jpeg&s=83113">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/8/16518d88df88da35?w=1540&h=846&f=jpeg&s=166293">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/8/16518c4a397c8323?w=2090&h=1088&f=jpeg&s=238449">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/8/16518cc2e30965b3?w=2044&h=886&f=jpeg&s=219762">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/8/16518ce4dedb247c?w=1548&h=662&f=jpeg&s=139445">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/29/16624374b3118bf9?w=2514&h=1344&f=jpeg&s=460368">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/29/166243797d3e95c9?w=1270&h=752&f=jpeg&s=196805">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/29/1662437c9eee40fd?w=1830&h=880&f=jpeg&s=165104">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/25/164362fe387c4aff?w=2064&h=1108&f=jpeg&s=237457">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/25/1643631be47c2b83?w=1290&h=646&f=jpeg&s=110034">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/12/1648dcf1530525c2?w=1388&h=664&f=jpeg&s=91101">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/7/16788160fe1224a0?w=720&h=300&f=png&s=55606">
+<meta property="og:updated_time" content="2019-03-05T08:48:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="还在记git命令？快试试SourceTree">
+<meta name="twitter:description" content="简介背景用过 git 版本管理的，对 SourceTree 应该不陌生的。它是 git 一个跨平台的 GUI 工具。界面很不错，而且功能也是很强大的。下面小编就针对SourceTree做一个小小的总结归纳，希望大家喜欢！   SourceTree下载官网下载地址Download for Mac OSX or Windows  这款软件是免费的，但是需要注册，登录授权；登录和授权这两个步骤没啥问题，">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/8/7/165133d70e07850c?w=2014&h=1136&f=jpeg&s=382751">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":null,"post_header":null,"post_body":"slideDownIn","coll_header":null,"sidebar":null}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/tools/SourceTree/"/>
+
+
+
+
+
+  <title>还在记git命令？快试试SourceTree | Baldwin's Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Baldwin's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">niceboybao@gmail.com</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            文章分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            技术标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            博客归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我的简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            关键字搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/tools/SourceTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baldwin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Baldwin's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">还在记git命令？快试试SourceTree</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T16:48:00+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2019/03/05/tools/SourceTree/" class="leancloud_visitors" data-flag-title="还在记git命令？快试试SourceTree">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>用过 git 版本管理的，对 SourceTree 应该不陌生的。它是 git 一个跨平台的 GUI 工具。界面很不错，而且功能也是很强大的。下面小编就针对SourceTree做一个小小的总结归纳，希望大家喜欢！ <img src="https://user-gold-cdn.xitu.io/2018/8/7/165133d70e07850c?w=2014&amp;h=1136&amp;f=jpeg&amp;s=382751" alt=""></p>
+<blockquote>
+<p>SourceTree下载官网下载地址<a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">Download for Mac OSX or Windows</a></p>
+</blockquote>
+<p>这款软件是免费的，但是需要注册，登录授权；登录和授权这两个步骤没啥问题，但对于注册需要科学上网才能注册的了。</p>
+<p>其实一些编辑器也是可以用作git提交代码的，包括合并代码等都行，之前整理过一 篇关于 <a href="https://juejin.im/post/5b123ace6fb9a01e6f560a4b" target="_blank" rel="noopener"><code>Visual Studio Code</code></a>如何提交代码的,在VS Code中也有很多git提交的插件。但是对比了发现SourceTree更强大更专业一点。 <img src="https://user-gold-cdn.xitu.io/2018/8/7/165134d97b0fd364?w=1994&amp;h=1046&amp;f=jpeg&amp;s=199683" alt=""></p>
+<h2 id="添加仓库"><a href="#添加仓库" class="headerlink" title="添加仓库"></a>添加仓库</h2><h3 id="clone仓库"><a href="#clone仓库" class="headerlink" title="clone仓库"></a>clone仓库</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/29/1662456a7a39ec17?w=962&amp;h=492&amp;f=jpeg&amp;s=81306" alt=""></p>
+<h3 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h3><p>在GitHub或者gitlab上面新建一个新的远程分支比较简单，只需要规定从哪边clone的即可。 <img src="https://user-gold-cdn.xitu.io/2018/7/12/1648de4d9295a32c?w=1634&amp;h=672&amp;f=jpeg&amp;s=66123" alt=""></p>
+<blockquote>
+<p>⚡ 需要注意的是，新建的远程分支也许在<code>SourceTree</code>上面没显示，这时候我们可以从origin在拉取一遍,也许数据没有同步过来。</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/12/1648de986eb41ad5?w=1516&amp;h=998&amp;f=jpeg&amp;s=159899" alt=""></p>
+<h3 id="检出分支"><a href="#检出分支" class="headerlink" title="检出分支"></a>检出分支</h3><p>在本地开发的话，当然要新建一个某远程分支相对应的本地分支，这时候 <code>SourceTree</code>的检出功能就显得很强大了。检出分支相当于在本地创建一个和远程代码同步的分支，在项目功能迭代的时候很常用，你可以在不同的分支上面提交不同的功能代码，互不影响。</p>
+<p>在<code>origin</code>里面找到要同步检出的远程分支，右键检出即可</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/8/16518b219bc1a364?w=1656&amp;h=864&amp;f=jpeg&amp;s=141377" alt=""></p>
+<p>你可以更改本地分支名，但是建议保持一致方便查找 <img src="https://user-gold-cdn.xitu.io/2018/8/8/16518b39cee5f3b1?w=1406&amp;h=554&amp;f=jpeg&amp;s=96449" alt=""> 检出后在分支标签下显示出分支，并切换成当前分支，<code>你也可以双击分支完成切换</code></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/8/16518b4fe466d73a?w=1718&amp;h=896&amp;f=jpeg&amp;s=152235" alt=""></p>
+<h2 id="提交流程"><a href="#提交流程" class="headerlink" title="提交流程"></a>提交流程</h2><blockquote>
+<p>先说下大致思路</p>
+</blockquote>
+<p>提交流程很简单，大致是这样的，先暂存要提交的文件，提交，拉取分支代码(这里是拉取别人写的代码)，有冲突解决冲突(你和别人改了同一个地方了)，再提交，最后推送上去即可。简单吧！</p>
+<h3 id="暂存代码"><a href="#暂存代码" class="headerlink" title="暂存代码"></a>暂存代码</h3><p>在为暂存文件里面勾选即可暂存，暂存的意思就是说，我这里面的文件是准备要提交的。</p>
+<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><p><img src="https://user-gold-cdn.xitu.io/2018/9/29/1662456db0f5ab13?w=2532&amp;h=1338&amp;f=jpeg&amp;s=362141" alt=""></p>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>解决冲突这个工具处理的不是很好，这边建议用编辑器解决，一目了然。<a href="https://juejin.im/post/5b123ace6fb9a01e6f560a4b" target="_blank" rel="noopener">Vs Code解决冲突</a></p>
+<h3 id="回滚提交"><a href="#回滚提交" class="headerlink" title="回滚提交"></a>回滚提交</h3><p>有些时候，我们提交的代码有问题，需要回滚回去。 将某次变更（在sourcetree里是某个节点）右键选择回滚提交。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/29/166245bfa5ad4a58?w=976&amp;h=708&amp;f=jpeg&amp;s=83113" alt=""></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
+<p>提交的流程很清晰，总之记住要<code>先拉取</code>在 <code>推送</code>就是了。</p>
+</blockquote>
+<h2 id="操纵分支"><a href="#操纵分支" class="headerlink" title="操纵分支"></a>操纵分支</h2><h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>切换分支很简单，在分支标签下双击一个分支即可</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/8/16518d88df88da35?w=1540&amp;h=846&amp;f=jpeg&amp;s=166293" alt=""></p>
+<blockquote>
+<p>⚡ 需要注意的是，在切换分支之前尽量吧切换前分支代码的提交一下，不然要是代码有冲突的时候会报错</p>
+</blockquote>
+<h3 id="合并分支-合并代码"><a href="#合并分支-合并代码" class="headerlink" title="合并分支(合并代码)"></a>合并分支(合并代码)</h3><p>合并分支相当于在A远程分支上 去merge B远程分支的代码，做到A包含B的效果，大致流程就是，①先在本地切换成A分支，②merge B分支代码，③有冲突的话解决冲突，④提交完成合并。</p>
+<blockquote>
+<p>这里以master分支为例，merge <a href="mailto:jquery-seeds@1.0" target="_blank" rel="noopener">jquery-seeds@1.0</a>分支的代码：首先拉取<a href="mailto:jquery-seeds@1.0" target="_blank" rel="noopener">jquery-seeds@1.0</a>到master</p>
+</blockquote>
+<blockquote>
+<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4></blockquote>
+<blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/8/16518c4a397c8323?w=2090&amp;h=1088&amp;f=jpeg&amp;s=238449" alt=""></p>
+</blockquote>
+<blockquote>
+<p>拉取过后要是有冲突文件本地需要解决冲突(冲突过多的话建议用编辑器解决冲突)</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/8/16518cc2e30965b3?w=2044&amp;h=886&amp;f=jpeg&amp;s=219762" alt=""></p>
+<blockquote>
+<p>解决冲突</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/8/16518ce4dedb247c?w=1548&amp;h=662&amp;f=jpeg&amp;s=139445" alt=""></p>
+<blockquote>
+<p>提交(和正常提交流程一致)</p>
+</blockquote>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>点合并分支 <img src="https://user-gold-cdn.xitu.io/2018/9/29/16624374b3118bf9?w=2514&amp;h=1344&amp;f=jpeg&amp;s=460368" alt=""> 选合并已抓取，找到需要合并过来的分支，确定即可 <img src="https://user-gold-cdn.xitu.io/2018/9/29/166243797d3e95c9?w=1270&amp;h=752&amp;f=jpeg&amp;s=196805" alt=""></p>
+<p>合并好后，还可以在本地对比下新增了哪些文件及所做的改动(有冲突解决冲突，推荐用编辑器解决冲突) <img src="https://user-gold-cdn.xitu.io/2018/9/29/1662437c9eee40fd?w=1830&amp;h=880&amp;f=jpeg&amp;s=165104" alt=""> 后面提交流程同上。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1-每次用sourceTree拉代码都需要输入密码，如何解决？"><a href="#1-每次用sourceTree拉代码都需要输入密码，如何解决？" class="headerlink" title="1.每次用sourceTree拉代码都需要输入密码，如何解决？"></a>1.每次用sourceTree拉代码都需要输入密码，如何解决？</h3><p>如图所示： <img src="https://user-gold-cdn.xitu.io/2018/6/25/164362fe387c4aff?w=2064&amp;h=1108&amp;f=jpeg&amp;s=237457" alt=""></p>
+<p><strong>解决方案一：</strong></p>
+<blockquote>
+<p>在每个git或者gitlab仓库上面拼上<code>gitname@</code>即可,如图：</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/25/1643631be47c2b83?w=1290&amp;h=646&amp;f=jpeg&amp;s=110034" alt=""></p>
+<p><strong>解决方案二：</strong></p>
+<blockquote>
+<p>在设置的网络里面先删除git分支对应的用户，然后重试即可！</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/12/1648dcf1530525c2?w=1388&amp;h=664&amp;f=jpeg&amp;s=91101" alt=""> <img src="https://user-gold-cdn.xitu.io/2018/12/7/16788160fe1224a0?w=720&amp;h=300&amp;f=png&amp;s=55606" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tools/" rel="tag"># Tools</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/15/tools/vscode/" rel="next" title="强大的VS Code">
+                <i class="fa fa-chevron-left"></i> 强大的VS Code
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/others/nginx/" rel="prev" title="阿里云服务器（1、nginx配置实战）">
+                阿里云服务器（1、nginx配置实战） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Baldwin" />
+            
+              <p class="site-author-name" itemprop="name">Baldwin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/niceboybao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/58ec89745c497d0062c633f7/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/baldwin9191" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加仓库"><span class="nav-number">1.2.</span> <span class="nav-text">添加仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clone仓库"><span class="nav-number">1.2.1.</span> <span class="nav-text">clone仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建分支"><span class="nav-number">1.2.2.</span> <span class="nav-text">新建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检出分支"><span class="nav-number">1.2.3.</span> <span class="nav-text">检出分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交流程"><span class="nav-number">1.3.</span> <span class="nav-text">提交流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#暂存代码"><span class="nav-number">1.3.1.</span> <span class="nav-text">暂存代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交"><span class="nav-number">1.3.2.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突"><span class="nav-number">1.3.3.</span> <span class="nav-text">解决冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回滚提交"><span class="nav-number">1.3.4.</span> <span class="nav-text">回滚提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.3.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操纵分支"><span class="nav-number">1.4.</span> <span class="nav-text">操纵分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切换分支"><span class="nav-number">1.4.1.</span> <span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并分支-合并代码"><span class="nav-number">1.4.2.</span> <span class="nav-text">合并分支(合并代码)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一："><span class="nav-number">1.4.2.1.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二："><span class="nav-number">1.4.2.2.</span> <span class="nav-text">方法二：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">1.5.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-每次用sourceTree拉代码都需要输入密码，如何解决？"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.每次用sourceTree拉代码都需要输入密码，如何解决？</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baldwin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    <span id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("D9I3UknceTftjKIFeCKrLpVE-gzGzoHsz", "Ayjznf7yPSo72mW1tHPIG7Fe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Others," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介先来一波福利广告(已过期)双十一了，阿里云推出了史上最优惠的云服务器产品(点击这里查看详情),1核2G新用户只需要99元/年，一次性买3年只需要不到300元，价格确实极大的优惠。  要是老用户的话可以用新开一个账号，用亲戚朋友的身份证认证一下也能享受1折优惠，加入我的战队(点击这里查看详)，邀请一个人差不多能瓜分战队的 50元分红+50元现金红包+25%返现 。打个比方，假如你是新用户，你买了">
+<meta name="keywords" content="Others">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云服务器（1、nginx配置实战）">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/others/nginx/index.html">
+<meta property="og:site_name" content="Baldwin&#39;s Blogs">
+<meta property="og:description" content="简介先来一波福利广告(已过期)双十一了，阿里云推出了史上最优惠的云服务器产品(点击这里查看详情),1核2G新用户只需要99元/年，一次性买3年只需要不到300元，价格确实极大的优惠。  要是老用户的话可以用新开一个账号，用亲戚朋友的身份证认证一下也能享受1折优惠，加入我的战队(点击这里查看详)，邀请一个人差不多能瓜分战队的 50元分红+50元现金红包+25%返现 。打个比方，假如你是新用户，你买了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/10/166fb8286d8b58d2?w=2070&h=1386&f=png&s=1338713">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/12/167068e18198a8a1?w=2064&h=1074&f=png&s=637329">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/10/166fb93f449a6ecf?w=2360&h=1118&f=png&s=317203">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/10/166fb9e7322b811b?w=1160&h=752&f=png&s=516328">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/10/166fc5866e35de82?w=1726&h=1152&f=png&s=456856">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/10/166fc6a8fada4db6?w=2166&h=1228&f=png&s=236035">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/7/16788160fe1224a0?w=720&h=300&f=png&s=55606">
+<meta property="og:updated_time" content="2019-03-05T08:50:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里云服务器（1、nginx配置实战）">
+<meta name="twitter:description" content="简介先来一波福利广告(已过期)双十一了，阿里云推出了史上最优惠的云服务器产品(点击这里查看详情),1核2G新用户只需要99元/年，一次性买3年只需要不到300元，价格确实极大的优惠。  要是老用户的话可以用新开一个账号，用亲戚朋友的身份证认证一下也能享受1折优惠，加入我的战队(点击这里查看详)，邀请一个人差不多能瓜分战队的 50元分红+50元现金红包+25%返现 。打个比方，假如你是新用户，你买了">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/11/10/166fb8286d8b58d2?w=2070&h=1386&f=png&s=1338713">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":null,"post_header":null,"post_body":"slideDownIn","coll_header":null,"sidebar":null}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/others/nginx/"/>
+
+
+
+
+
+  <title>阿里云服务器（1、nginx配置实战） | Baldwin's Blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Baldwin's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">niceboybao@gmail.com</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            我的主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            文章分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            技术标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            博客归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            我的简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            关键字搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-categories" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/others/nginx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baldwin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Baldwin's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">阿里云服务器（1、nginx配置实战）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T16:50:00+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Others/" itemprop="url" rel="index">
+                    <span itemprop="name">Others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/2019/03/05/others/nginx/" class="leancloud_visitors" data-flag-title="阿里云服务器（1、nginx配置实战）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="先来一波福利广告-已过期"><a href="#先来一波福利广告-已过期" class="headerlink" title="先来一波福利广告(已过期)"></a><del>先来一波福利广告(已过期)</del></h2><p><del>双十一了，阿里云推出了史上最优惠的云服务器产品(<a href="https://m.aliyun.com/act/team1111/#/share?params=N.QJPTsZki4i.0vr9aipb" target="_blank" rel="noopener">点击这里查看详情</a>),1核2G新用户只需要99元/年，一次性买3年只需要不到300元，价格确实极大的优惠。</del></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/10/166fb8286d8b58d2?w=2070&amp;h=1386&amp;f=png&amp;s=1338713" alt=""></p>
+<p><del>要是老用户的话可以用新开一个账号，用亲戚朋友的身份证认证一下也能享受1折优惠，加入我的战队(<a href="https://m.aliyun.com/act/team1111/#/share?params=N.QJPTsZki4i.0vr9aipb" target="_blank" rel="noopener">点击这里查看详</a>)，邀请一个人差不多能瓜分战队的 <code>50元分红+50元现金红包+25%返现</code> 。打个比方，<code>假如你是新用户，你买了一个3年的云服务器一共300块，买过后，你成功邀请一人（下单3年的云服务器）就可分50(战队红包) + 50（现金红包） + 300*25%（返利红包）。相当于买服务器的钱回来了一半(折上5折)</code>，听着是不是很诱惑人，进来了解下吧；目前战队排名是top15，后名次靠前的话还有更大的优惠。<a href="https://m.aliyun.com/act/team1111/#/share?params=N.QJPTsZki4i.0vr9aipb" target="_blank" rel="noopener">https://m.aliyun.com/act/team1111/#/share?params=N.QJPTsZki4i.0vr9aipb</a></del></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/12/167068e18198a8a1?w=2064&amp;h=1074&amp;f=png&amp;s=637329" alt=""></p>
+<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><h3 id="连接服务器"><a href="#连接服务器" class="headerlink" title="连接服务器"></a>连接服务器</h3><p>很多前端的小伙伴买了云服务器后，担心不会配置，毕竟很多的前端还不是很会配置nginx，这里小编详细讲解下我买的阿里云服务器配置的过程。</p>
+<p>点击上面链接就可参团购买，购买过程中推荐系统选择<code>CentOS</code>和<code>Ubuntu</code>系统。Ubuntu系统用户占用率高，所以文档自然也多，比较适合新手；CentOS比较适合企业和商用，一般看你们公司用的都是CentOS系统的;<a href="https://blog.csdn.net/qq_21033663/article/details/78010230" target="_blank" rel="noopener">具体2者的区别可查看这里</a>；小编买的是<code>Ubuntu 16.04 64位</code>。其他的选项选择默认就行，地区只要是国内的都很快。</p>
+<p>买好后，点击头像=&gt;选择产品服务=&gt;云服务器，即可看到购买过的服务器产品。基本信息，配置信息，对cpu的监控一目了然。买阿里云的一个主要原因还是阿里云盾安全。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/10/166fb93f449a6ecf?w=2360&amp;h=1118&amp;f=png&amp;s=317203" alt=""></p>
+<p>可以在<code>更多</code>里面修改远程连接密码和重置服务器密码，修改好后，尝试远程连接下，先输入远程连接密码，后登陆用户名(root)、密码即可。</p>
+<p>当然，也可直接使用命令行链接 :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ssh 服务器外网ip</span><br><span class="line">输入电脑密码，输入服务器密码</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/10/166fb9e7322b811b?w=1160&amp;h=752&amp;f=png&amp;s=516328" alt=""></p>
+<p>除此之外，你也可用工具链接，对于 <code>lunix</code> 命令不是很熟悉的小伙伴比较实用。 这里推荐用<code>Transmit</code>和<code>Filezilla</code>其他的都一样，用户名输入<code>root</code>,端口选择 <code>22</code> 即可。</p>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>更新ubuntu软件源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y python-software-properties software-properties-common</span><br><span class="line">sudo add-apt-repository ppa:chris-lea/node.js</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>安装nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br><span class="line"><span class="meta">#</span> 检查是否安装成功</span><br><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
+<p>安装好的文件位置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/nginx：主程序</span><br><span class="line">/etc/nginx：存放配置文件</span><br><span class="line">/usr/share/nginx：存放静态文件</span><br><span class="line">/var/log/nginx：存放日志</span><br></pre></td></tr></table></figure>
+<p>其实从上面的根目录文件夹可以知道，Linux系统的配置文件一般放在 <code>/etc</code>，日志一般放在 <code>/var/log</code>，运行的程序一般放在 <code>/usr/sbin</code> 或者 <code>/usr/bin</code>。当然，如果要更清楚Nginx的配置项放在什么地方，可以打开 <code>/etc/nginx/nginx.conf</code>。</p>
+<h3 id="安装其他常用工具"><a href="#安装其他常用工具" class="headerlink" title="安装其他常用工具"></a>安装其他常用工具</h3><p><strong>1、安装nodejs</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt install nodejs-legacy</span><br><span class="line">sudo apt install npm</span><br></pre></td></tr></table></figure>
+<p>更新npm的包镜像源，方便快速下载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm config set registry https://registry.npm.taobao.org</span><br><span class="line">sudo npm config list</span><br></pre></td></tr></table></figure>
+<p>全局安装n管理器(用于管理nodejs版本)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install n -g</span><br></pre></td></tr></table></figure>
+<p>安装最新的nodejs（stable版本）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo n stable</span><br><span class="line"><span class="meta">#</span> 检查是否安装成功</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p><strong>2、安装webpack</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack-cli -g</span><br><span class="line">npm install webpack -g</span><br></pre></td></tr></table></figure>
+<p><strong>3、安装git</strong></p>
+<p>如果系统未安装git的话，就会非常友好的提示安装git的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
+<p>在云服务器上，关于git的相关操作就不方便用图形界面化工具了，现在命令行的优势出来了，具体git命令<a href="https://www.cnblogs.com/uniquenessss/p/6668255.html" target="_blank" rel="noopener">请参考</a></p>
+<blockquote>
+<p>遗漏的工具后续会补上</p>
+</blockquote>
+<h3 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h3><p>nginx安装完成后，配置文件为 <code>/etc/nginx/nginx.conf</code> 和 <code>/etc/nginx/conf.d/default.conf</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx</span><br><span class="line">vim nginx.conf</span><br><span class="line">cd /etc/nginx/conf.d</span><br><span class="line">vim default.conf</span><br></pre></td></tr></table></figure>
+<p><strong>自定义nginx.conf 配置</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>运行用户，默认即是nginx，可以不进行设置</span><br><span class="line">user root;</span><br><span class="line"><span class="meta">#</span>Nginx进程，一般设置为和CPU核数一样</span><br><span class="line">worker_processes 1;</span><br><span class="line"><span class="meta">#</span>进程pid存放位置</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024; # 单个后台进程的最大并发数</span><br><span class="line">    # multi_accept on;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    ##</span><br><span class="line">    # Basic Settings</span><br><span class="line">    ##</span><br><span class="line">    sendfile on; #开启高效传输模式</span><br><span class="line">    tcp_nopush on; #减少网络报文段的数量</span><br><span class="line">    tcp_nodelay on;</span><br><span class="line">    keepalive_timeout 65; #保持连接的时间，也叫超时时间</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    # server_tokens off;</span><br><span class="line"></span><br><span class="line">    # server_names_hash_bucket_size 64;</span><br><span class="line">    # server_name_in_redirect off;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/mime.types; #文件扩展名与类型映射表</span><br><span class="line">    default_type application/octet-stream; #默认文件类型</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # SSL Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Logging Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    access_log /var/log/nginx/access.log;</span><br><span class="line">    error_log /var/log/nginx/error.log;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Gzip Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    gzip on; #开启gzip压缩</span><br><span class="line">    gzip_disable "msie6";</span><br><span class="line"></span><br><span class="line">    # gzip_vary on;</span><br><span class="line">    # gzip_proxied any;</span><br><span class="line">    # gzip_comp_level 6;</span><br><span class="line">    # gzip_buffers 16 8k;</span><br><span class="line">    # gzip_http_version 1.1;</span><br><span class="line">    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Virtual Host Configs</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf; #包含的子配置项位置和文件</span><br><span class="line">    # include /etc/nginx/sites-enabled/*;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>mail &#123;</span><br><span class="line"><span class="meta">#</span>    # See sample authentication script at:</span><br><span class="line"><span class="meta">#</span>    # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span>    # auth_http localhost/auth.php;</span><br><span class="line"><span class="meta">#</span>    # pop3_capabilities "TOP" "USER";</span><br><span class="line"><span class="meta">#</span>    # imap_capabilities "IMAP4rev1" "UIDPLUS";</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span>    server &#123;</span><br><span class="line"><span class="meta">#</span>        listen     localhost:110;</span><br><span class="line"><span class="meta">#</span>        protocol   pop3;</span><br><span class="line"><span class="meta">#</span>        proxy      on;</span><br><span class="line"><span class="meta">#</span>    &#125;</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span>    server &#123;</span><br><span class="line"><span class="meta">#</span>        listen     localhost:143;</span><br><span class="line"><span class="meta">#</span>        protocol   imap;</span><br><span class="line"><span class="meta">#</span>        proxy      on;</span><br><span class="line"><span class="meta">#</span>    &#125;</span><br><span class="line"><span class="meta">#</span>&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>自定义default.conf 配置</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;   #配置监听端口</span><br><span class="line">        server_name  localhost;  #配置域名</span><br><span class="line">        #charset koi8-r;</span><br><span class="line">        #access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            #服务默认启动目录</span><br><span class="line">            root /usr/share/nginx/html/pc;   #pc</span><br><span class="line">            # nginx适配pc和app设备</span><br><span class="line">            if ($http_user_agent ~* '(Android|webOS|iPhone|iPod|BlackBerry)') &#123;</span><br><span class="line">                root /usr/share/nginx/html/app;  #app</span><br><span class="line">            &#125;</span><br><span class="line">            index  index.html;    #默认访问文件</span><br><span class="line">            allow  all; #允许访问的ip</span><br><span class="line">            # deny   all;  #拒绝访问的ip</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #  redirect  error pages to the static page /404.html</span><br><span class="line">        error_page  404   /static/html/404/404.html;   # 配置404页面</span><br><span class="line">        # redirect server error pages to the static page /50x.html</span><br><span class="line">        error_page   500 502 503 504  /static/html/404/500.html;   #错误状态码的显示页面，配置后需要重启</span><br><span class="line"></span><br><span class="line">        # ^~ 表示uri以某个常规字符串开头,大多情况下用来匹配url路径，nginx不对url做编码，因此请求为/static/20%/aa，</span><br><span class="line">        # 可以被规则^~ /static/ /aa匹配到（注意是空格）。</span><br><span class="line">        location ^~ /static/ &#123;</span><br><span class="line">            root /usr/share/nginx/html;</span><br><span class="line">            allow  all; #允许访问的ip</span><br><span class="line">            # deny   all;  #拒绝访问的ip</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root /usr/share/nginx/html/pc/;   #pc</span><br><span class="line">            # nginx适配pc和app设备</span><br><span class="line">            if ($http_user_agent ~* '(Android|webOS|iPhone|iPod|BlackBerry)') &#123;</span><br><span class="line">                root /usr/share/nginx/html/app/;  #app</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    proxy_pass   http://127.0.0.1;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        #</span><br><span class="line">        #location ~ \.php$ &#123;</span><br><span class="line">        #    root           html;</span><br><span class="line">        #    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        #    fastcgi_index  index.php;</span><br><span class="line">        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">        #    include        fastcgi_params;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        # deny access to .htaccess files, if Apache's document root</span><br><span class="line">        # concurs with nginx's one</span><br><span class="line">        #</span><br><span class="line">        #location ~ /\.ht &#123;</span><br><span class="line">        #    deny  all;</span><br><span class="line">        #&#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义默认目录"><a href="#自定义默认目录" class="headerlink" title="自定义默认目录"></a>自定义默认目录</h3><p>我们服务的默认目录放在 <code>/usr/share/nginx/html</code> 了下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/nginx/html</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>假如你要定义服务器的默认访问目录，修改 <code>location /</code> 中的root即可，不过需要开通下你自定义目录的权限。</p>
+</blockquote>
+<p>以<code>/root/www</code>是自定义目录为例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 需要一层层分别开通权限</span><br><span class="line">chmod -R 777 /root</span><br><span class="line">chmod -R 777 /root/www</span><br></pre></td></tr></table></figure>
+<p>假如你使用的是 <code>Transmit</code> 等服务器工具，也可用工具查看</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/10/166fc5866e35de82?w=1726&amp;h=1152&amp;f=png&amp;s=456856" alt=""></p>
+<h3 id="自定义错误页面"><a href="#自定义错误页面" class="headerlink" title="自定义错误页面"></a>自定义错误页面</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> redirect  error pages to the static page /404.html</span><br><span class="line">error_page  404   /static/html/404/404.html;   # 配置404页面</span><br><span class="line"><span class="meta">#</span> redirect server error pages to the static page /50x.html</span><br><span class="line">error_page   500 502 503 504  /static/html/404/500.html;   #错误状态码的显示页面，配置后需要重启</span><br></pre></td></tr></table></figure>
+<p>然后在你默认或者自定义的服务器目录下，根据你的错误页配置，新建相关的页面即可。</p>
+<h3 id="Nginx访问权限和路径匹配规则"><a href="#Nginx访问权限和路径匹配规则" class="headerlink" title="Nginx访问权限和路径匹配规则"></a>Nginx访问权限和路径匹配规则</h3><p>在匹配规则里面，有2个字段可以控制这个规则下的访问权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    allow  all; #允许访问的ip</span><br><span class="line">    # deny   all;  #拒绝访问的ip</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实际情况中，访问权限的控制还是比较复杂的，例如，要求服务器 <code>static</code>（静态目录）所有用户都能访问，且，重新定义访问路径,我们需要location块来完成相关的需求匹配。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> ^~ 表示uri以某个常规字符串开头,大多情况下用来匹配url路径，nginx不对url做编码，因此请求为/static/20%/aa，</span><br><span class="line"><span class="meta">#</span> 可以被规则^~ /static/ /aa匹配到（注意是空格）。</span><br><span class="line">location ^~ /static/ &#123;</span><br><span class="line">root /usr/share/nginx/html;</span><br><span class="line">allow  all; #允许访问的ip</span><br><span class="line"><span class="meta">#</span> deny   all;  #拒绝访问的ip</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于nginx路径匹配规则，也需要简单的了解一下</p>
+<ul>
+<li>= 表示精确匹配</li>
+<li>^~ 表示uri以某个常规字符串开头,大多情况下用来匹配url路径，nginx不对url做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）。</li>
+<li>~ 正则匹配(区分大小写)</li>
+<li>~* 正则匹配(不区分大小写)</li>
+<li>!~和!~*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
+<li>/ 任何请求都会匹配</li>
+</ul>
+<p><strong>符号的优先级</strong></p>
+<blockquote>
+<p>首先匹配 =，其次匹配^~, 其次是按文件中顺序的正则匹配，最后是交给 / 通用匹配。当有匹配成功时候，停止匹配，按当前匹配规则处理请求。</p>
+</blockquote>
+<h3 id="Nginx反向代理的设置"><a href="#Nginx反向代理的设置" class="headerlink" title="Nginx反向代理的设置"></a>Nginx反向代理的设置</h3><p>后续补充。</p>
+<h3 id="Nginx适配PC或移动设备"><a href="#Nginx适配PC或移动设备" class="headerlink" title="Nginx适配PC或移动设备"></a>Nginx适配PC或移动设备</h3><p>如上述配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>服务默认启动目录</span><br><span class="line">root /usr/share/nginx/html/pc;   #pc</span><br><span class="line"><span class="meta">#</span> nginx适配pc和app设备</span><br><span class="line">if ($http_user_agent ~* '(Android|webOS|iPhone|iPod|BlackBerry)') &#123;</span><br><span class="line">root /usr/share/nginx/html/app;  #app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>服务默认启动目录</span><br><span class="line">root /usr/share/nginx/html/pc;   #pc</span><br><span class="line"><span class="meta">#</span> nginx适配pc和app设备</span><br><span class="line">if ($http_user_agent ~* '(Android|webOS|iPhone|iPod|BlackBerry)') &#123;</span><br><span class="line">root /usr/share/nginx/html/app;  #app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可用app和pc访问我的服务器查看效果 <a href="http://47.99.212.100/" target="_blank" rel="noopener">47.99.212.100</a></p>
+<h3 id="配置阿里云安全组"><a href="#配置阿里云安全组" class="headerlink" title="配置阿里云安全组"></a>配置阿里云安全组</h3><p>从上面的配置文件可以看出，nginx服务监听的是80端口，所以记得到ECS实例一下打开端口。步骤如下：</p>
+<ul>
+<li>进入阿里云控制台，并找到ECS实例。</li>
+<li>点击实例后边的”更多”</li>
+<li>点击”网络和安全组” ，再点击”安全组配置”</li>
+<li>选择”安全组列表”，再点击”安全组配置”,再点击”加入安全组规则”</li>
+<li>进行80端口的设置，具体设置如图。</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/11/10/166fc6a8fada4db6?w=2166&amp;h=1228&amp;f=png&amp;s=236035" alt=""></p>
+<h3 id="nginx-相关命令"><a href="#nginx-相关命令" class="headerlink" title="nginx 相关命令"></a>nginx 相关命令</h3><blockquote>
+<p>在nginx配置的过程中，我们<code>①先安装nginx；</code>安装好后，检查是否安装成功；<code>②然后开始做相关nginx配置</code>；<code>③配置完后检查配置是否正常</code>；<code>④然后启动nginx</code>；<code>⑤后续每次改动nginx配置都需重启nginx</code>；</p>
+</blockquote>
+<p>启动nginx 服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>方法一</span><br><span class="line">nginx</span><br><span class="line"><span class="meta">#</span>方法二</span><br><span class="line">systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+<p>查看所有启动的nginx进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br></pre></td></tr></table></figure>
+<p>停止Nginx服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>方法一</span><br><span class="line">nginx  -s stop</span><br><span class="line"><span class="meta">#</span>方法二</span><br><span class="line">nginx -s quit</span><br><span class="line"><span class="meta">#</span>方法三</span><br><span class="line">killall nginx</span><br></pre></td></tr></table></figure>
+<p>检查nginx配置是否正常</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+<p>重启nginx服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>查看端口占用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tlnp</span><br></pre></td></tr></table></figure>
+<h3 id="nginx操作常用的一些命令"><a href="#nginx操作常用的一些命令" class="headerlink" title="nginx操作常用的一些命令"></a>nginx操作常用的一些命令</h3><p>ssh链接云服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ssh 服务器外网ip</span><br></pre></td></tr></table></figure>
+<p>新建文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir www</span><br></pre></td></tr></table></figure>
+<p>移动文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv node-v6.10.0-linux-x64 nodejs</span><br></pre></td></tr></table></figure>
+<p>解压文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf node-v6.10.0-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+<p>查看文件路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+<p>访问文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>编辑文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/7/16788160fe1224a0?w=720&amp;h=300&amp;f=png&amp;s=55606" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Others/" rel="tag"># Others</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/tools/SourceTree/" rel="next" title="还在记git命令？快试试SourceTree">
+                <i class="fa fa-chevron-left"></i> 还在记git命令？快试试SourceTree
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/others/jenkins/" rel="prev" title="阿里云服务器（2、jenkins实现前端自动化部署）">
+                阿里云服务器（2、jenkins实现前端自动化部署） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="Baldwin" />
+            
+              <p class="site-author-name" itemprop="name">Baldwin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/niceboybao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/58ec89745c497d0062c633f7/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-juejin"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/baldwin9191" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#先来一波福利广告-已过期"><span class="nav-number">1.1.</span> <span class="nav-text">先来一波福利广告(已过期)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx配置"><span class="nav-number">1.2.</span> <span class="nav-text">nginx配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接服务器"><span class="nav-number">1.2.1.</span> <span class="nav-text">连接服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Nginx"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装其他常用工具"><span class="nav-number">1.2.3.</span> <span class="nav-text">安装其他常用工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置nginx"><span class="nav-number">1.2.4.</span> <span class="nav-text">配置nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义默认目录"><span class="nav-number">1.2.5.</span> <span class="nav-text">自定义默认目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义错误页面"><span class="nav-number">1.2.6.</span> <span class="nav-text">自定义错误页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx访问权限和路径匹配规则"><span class="nav-number">1.2.7.</span> <span class="nav-text">Nginx访问权限和路径匹配规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx反向代理的设置"><span class="nav-number">1.2.8.</span> <span class="nav-text">Nginx反向代理的设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx适配PC或移动设备"><span class="nav-number">1.2.9.</span> <span class="nav-text">Nginx适配PC或移动设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置阿里云安全组"><span class="nav-number">1.2.10.</span> <span class="nav-text">配置阿里云安全组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-相关命令"><span class="nav-number">1.2.11.</span> <span class="nav-text">nginx 相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx操作常用的一些命令"><span class="nav-number">1.2.12.</span> <span class="nav-text">nginx操作常用的一些命令</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baldwin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+<span id="busuanzi_container_site_pv">
+    <span id="busuanzi_value_site_pv"></span>
+</span>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("D9I3UknceTftjKIFeCKrLpVE-gzGzoHsz", "Ayjznf7yPSo72mW1tHPIG7Fe");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

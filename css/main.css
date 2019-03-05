@@ -1253,18 +1253,7 @@ pre .javascript .function {
   -o-transform: rotate(30deg);
   transform: rotate(30deg);
 }
-.use-motion .post-block,
-.use-motion .pagination,
-.use-motion .comments {
-  opacity: 0;
-}
-.use-motion .post-header {
-  opacity: 0;
-}
 .use-motion .post-body {
-  opacity: 0;
-}
-.use-motion .collection-title {
   opacity: 0;
 }
 .posts-expand {
@@ -1823,7 +1812,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6a6f66;
+  background: #f5f0b9;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2861,7 +2850,6 @@ pre .javascript .function {
   background: #fff;
   box-shadow: initial;
   border-radius: initial;
-  opacity: 0;
 }
 .sidebar-inner.affix {
   position: fixed;
