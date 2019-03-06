@@ -277,15 +277,15 @@ p {
   margin: 0 0 20px 0;
 }
 a {
-  color: #555;
+  color: #3eaf7c;
   text-decoration: none;
   outline: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #3eaf7c;
   word-wrap: break-word;
 }
 a:hover {
-  color: #222;
-  border-bottom-color: #222;
+  color: #33b0fc;
+  border-bottom-color: #33b0fc;
 }
 blockquote {
   margin: 0;
@@ -1312,9 +1312,6 @@ pre .javascript .function {
 .posts-expand .post-body h6:hover .header-anchor {
   visibility: visible;
 }
-.posts-expand .post-body ul li {
-  list-style: circle;
-}
 .posts-expand .post-body img {
   box-sizing: border-box;
   margin: auto;
@@ -1812,7 +1809,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5337ff;
+  background: #db7efb;
 }
 .links-of-blogroll {
   font-size: 13px;
